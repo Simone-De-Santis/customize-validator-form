@@ -575,14 +575,18 @@ $(document).ready(function () {
 	};
 	function sanitize(arr, country) {
 		console.log("country", country);
-		console.log("prefix array", `objLocalizationPath.${country}`);
+		// `${country}`
+		console.log("prefix array", objLocalizationPath[country].prefixCellular);
 
 		const x = arr;
-		if (x[0] == "+" && x[1] == "3" && x[2] == "9") {
-			x.splice(0, 3);
-		} else if (x[0] == "0" && x[1] == "0" && x[2] == "3" && x[3] == "9") {
-			x.splice(0, 4);
-		}
+		objLocalizationPath[country].prefixCellular.map((items, index) => {
+			console.log(arr.join(''))
+			if (JSON.stringify(arr.join('')) === JSON.stringify(items)) {
+				console.log();
+				x.splice(0, items.length)
+			}
+		})
+
 		return x;
 	}
 
