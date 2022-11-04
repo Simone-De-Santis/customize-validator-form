@@ -2,7 +2,7 @@ $(document).ready(function () {
 	const objLocalizationPath = {
 		italia: {
 			localization: "italia",
-			prefixCellular: ["+39", "0039"],
+			prefixCellular: ["+39", "0039", "0039"],
 			prefixCompanyCellular: [
 				"330",
 				"333",
@@ -580,12 +580,12 @@ $(document).ready(function () {
 
 		const x = arr;
 		objLocalizationPath[country].prefixCellular.map((items, index) => {
-			console.log(arr.join(''))
-			if (JSON.stringify(arr.join('')) === JSON.stringify(items)) {
+			console.log(arr.join(""));
+			if (JSON.stringify(arr.join("")) === JSON.stringify(items)) {
 				console.log();
-				x.splice(0, items.length)
+				x.splice(0, items.length);
 			}
-		})
+		});
 
 		return x;
 	}
