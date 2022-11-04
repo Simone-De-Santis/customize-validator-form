@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	const objLocalizationPath = {
-		italia :{
+		italia: {
 			localization: "italia",
 			prefixCellular: ["+39", "0039"],
 			prefixCompanyCellular: [
@@ -298,23 +298,23 @@ $(document).ready(function () {
 		// controlliamo se il data attribute della localizzazione è settato su italia per andare a formattare e validare il campo
 		if ($("#phonNumber").attr("data-validate-country") == "italia") {
 			/*! telefono (cellulare)
- 				 - il numero di telefono deve essere italiano
- 				 - non avere il prefisso internazionale
- 				 - non deve avere trattini o puntini
- 				 - a numero pulito da prefisso e puntini e altri simboli e trimmato deve avere un length di 10
- 				 -- deve iniziare obbligatoriamente con 3... 
- 				 ** prefisso +39 / 0039 italiano +378 san marino Malta +356 comune di campione +41 **
- 				 esempio di numero telefonico +39 347 7464862
- 				 +39 /0039 prefisso nazionale non obbligatorio per chiamate dall'italia 
- 				 347 prefisso operatori (MNO) o (MVNO) sulla quale si potrebbe fare un controllo
- 				 7464862 numero di 7 cifre che identificano il numero vero e proprio
+					 - il numero di telefono deve essere italiano
+					 - non avere il prefisso internazionale
+					 - non deve avere trattini o puntini
+					 - a numero pulito da prefisso e puntini e altri simboli e trimmato deve avere un length di 10
+					 -- deve iniziare obbligatoriamente con 3... 
+					 ** prefisso +39 / 0039 italiano +378 san marino Malta +356 comune di campione +41 **
+					 esempio di numero telefonico +39 347 7464862
+					 +39 /0039 prefisso nazionale non obbligatorio per chiamate dall'italia 
+					 347 prefisso operatori (MNO) o (MVNO) sulla quale si potrebbe fare un controllo
+					 7464862 numero di 7 cifre che identificano il numero vero e proprio
 
- 			 */
+				 */
 			// andiamo a creare un array con i valori numerici da controllare
 
 
 
-			
+
 			const arrPhoneNumber = phoneNumber.split("");
 			if (
 				arrPhoneNumber[0] == "+" &&

@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+	//£ oggetto per il confronto tra i dati inseriti
 	const objLocalizationPath = {
 		italia: {
 			localization: "italia",
@@ -573,38 +575,56 @@ $(document).ready(function () {
 			],
 		},
 	};
-	function sanitize(arr, country) {
-		console.log("country", country);
-		// `${country}`
-		console.log("prefix array", objLocalizationPath[country].prefixCellular);
 
+	//£ funzione per sanitize il numero di telefono e restituirlo senza l'eventuale prefisso
+	function prefixCut(arr, country) {
+		// console.log("country", country);
+		// `${country}`
+		// console.log("prefix array", objLocalizationPath[country].prefixCellular);
 		const x = arr;
 		objLocalizationPath[country].prefixCellular.map((items, index) => {
-			console.log(arr.join(""));
-			if (JSON.stringify(arr.join("")) === JSON.stringify(items)) {
-				console.log();
+			// console.log('join', x.join(""));
+			// console.log('items', items.length)
+			//£ creiamo un array con i primi valori inseriti dall'utente in riferimento al controllo che andiamo a fare 
+			//£ i primi 3 se il controllo lo andiamo a fare con un campo che ha 3 valori e 4 su 4 e così via
+
+			let arrPrefix = [];
+			for (let i = 0; i < items.length; i++) {
+				// console.log('xx', x[i])
+				arrPrefix.push(x[i])
+			}
+			// console.log('PREFIX', arrPrefix)
+			if (JSON.stringify(arrPrefix.join("")) === JSON.stringify(items)) {
 				x.splice(0, items.length);
+				// console.log('fine', arrPhoneNumber);
 			}
 		});
+		console.log('finercut', x);
 
 		return x;
 	}
 
+
 	$(".form").submit(function (e) {
 		// preveniamo il default
 		e.preventDefault();
-
+		// prendiamo tutti i valori delle input
 		$(".form input").each(function (index, items) {
+			// controlliamo che valore è richiesto nel labeel e attiviamo la validazione di riferimento 
+
+			// ! VALIDAZIONE NUMERO DI TELEFONO
+
 			if (items.getAttribute("data-validate-type") == "phone") {
-				console.log("items phone value", items.value.trim());
-				// prediamo il valore dell'input lo dividiamo in un array di tutti i caratteri e prendiamo solo i valori numerici
+				// console.log("items phone value", items.value.trim());
+				// prediamo il valore dell'input lo dividiamo in un array con tutti i caratteri
 				let arrPhoneNumber = items.value.split("");
-				arrPhoneNumber = sanitize(
+				// passiamo pe la funzione di prefixCut che controlla se è stato messo il prefisso e lo taglia 
+				arrPhoneNumber = prefixCut(
 					arrPhoneNumber,
 					items.getAttribute("data-validate-country"),
 				).filter((value) => Number(value));
 
-				console.log(arrPhoneNumber);
+				console.log('fine', arrPhoneNumber);
 			}
 		});
 	});
