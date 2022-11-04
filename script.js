@@ -628,27 +628,29 @@ $(document).ready(function () {
 		e.preventDefault();
 		// prendiamo tutti i valori delle input
 		$(".form input").each(function (index, items) {
-			// controlliamo che valore è richiesto nel labeel e attiviamo la validazione di riferimento 
+			//£ controlliamo che valore è richiesto nel labeel e attiviamo la validazione di riferimento 
 
-			// ! VALIDAZIONE NUMERO DI TELEFONO
+			// ! VALIDAZIONE NUMERO DI TELEFONO CELLULARE
 
 			if (items.getAttribute("data-validate-type") == "phone") {
-				// console.log("items phone value", items.value.trim());
-				// prediamo il valore dell'input lo dividiamo in un array con tutti i caratteri
+				//£ console.log("items phone value", items.value.trim());
+				//£ prediamo il valore dell'input lo dividiamo in un array con tutti i caratteri
 				let arrPhoneNumber = items.value.split("");
-				// passiamo per la funzione di prefixCut che controlla se è stato messo il prefisso e lo taglia
-				// una volta tagliato il prefisso (se lo ha) prendiamo solo i valori numerici inseriti andando a tagliare il resto (spazzi o altri caratteri)
+				//£ passiamo per la funzione di prefixCut che controlla se è stato messo il prefisso e lo taglia
+				//£ una volta tagliato il prefisso (se lo ha) prendiamo solo i valori numerici inseriti andando a tagliare il resto (spazzi o altri caratteri)
 				arrPhoneNumber = prefixCut(
 					arrPhoneNumber,
 					items.getAttribute("data-validate-country"),
 				).filter((value) => Number(value));
-				// controlliamo se le prime cifre corrispondono alle cifre di prefisso nell'oggetto validatore
-				// prefixCheck(arrPhoneNumber,
+				//£ controlliamo se le prime cifre corrispondono alle cifre di prefisso nell'oggetto validatore
+				//- prefixCheck(arrPhoneNumber,
 				// 	items.getAttribute("data-validate-country"))
-
 				console.log('prefix validation', prefixCheck(arrPhoneNumber,
 					items.getAttribute("data-validate-country")))
 				console.log('fine', arrPhoneNumber);
+
+
+
 			}
 		});
 	});
