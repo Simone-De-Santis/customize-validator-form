@@ -13,7 +13,7 @@
 
 <body>
 	<div class="container">
-		<form class="form">
+		<form class="form requires-validation">
 			<fieldset>
 				<legend>TEST FORM</legend>
 				<div class="mb-3">
@@ -21,11 +21,23 @@
 					<input type="tel" id="cellularNumber" class="form-control"
 						placeholder="numero di telefono cellulare" data-validate-country="italia"
 						data-validate-type="cellular" />
+					<div class="valid-feedback">
+						Username looks good!
+					</div>
+					<div class="invalid-feedback">
+						Username is required!
+					</div>
 				</div>
 				<div class="mb-3">
 					<label for="email" class="form-label">Email</label>
 					<input type="email" id="email" class="form-control" placeholder="email"
 						data-validate-country="italia" data-validate-type="email" />
+					<div class="valid-feedback">
+						Username looks good!
+					</div>
+					<div class="invalid-feedback">
+						Username is required!
+					</div>
 				</div>
 
 				<button type="submit" class="btn btn-primary" id="btn-form">
