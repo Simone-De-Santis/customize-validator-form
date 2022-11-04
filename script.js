@@ -4,7 +4,7 @@ $(document).ready(function () {
 	const objLocalizationPath = {
 		italia: {
 			localization: "italia",
-			prefixCellular: ["+39", "0039", "0039"],
+			prefixCellular: ["+39", "0039"],
 			prefixCompanyCellular: [
 				"330",
 				"333",
@@ -594,7 +594,7 @@ $(document).ready(function () {
 				arrPrefix.push(x[i])
 			}
 			// console.log('PREFIX', arrPrefix)
-			if (JSON.stringify(arrPrefix.join("")) === JSON.stringify(items)) {
+			if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
 				x.splice(0, items.length);
 				// console.log('fine', arrPhoneNumber);
 			}
@@ -602,6 +602,24 @@ $(document).ready(function () {
 		console.log('finercut', x);
 
 		return x;
+	}
+	function prefixCheck(arr, country) {
+		// const x = arr;
+		let isValid = false;
+		objLocalizationPath[country].prefixCompanyCellular.forEach((items) => {
+
+			console.log('items company', items);
+			console.log('arr', arr);
+			let arrPrefix = [];
+			for (let i = 0; i < items.length; i++) {
+				arrPrefix.push(arr[i])
+			}
+			if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
+				isValid = true;
+			}
+
+		});
+		return isValid;
 	}
 
 
@@ -618,12 +636,18 @@ $(document).ready(function () {
 				// console.log("items phone value", items.value.trim());
 				// prediamo il valore dell'input lo dividiamo in un array con tutti i caratteri
 				let arrPhoneNumber = items.value.split("");
-				// passiamo pe la funzione di prefixCut che controlla se è stato messo il prefisso e lo taglia 
+				// passiamo per la funzione di prefixCut che controlla se è stato messo il prefisso e lo taglia
+				// una volta tagliato il prefisso (se lo ha) prendiamo solo i valori numerici inseriti andando a tagliare il resto (spazzi o altri caratteri)
 				arrPhoneNumber = prefixCut(
 					arrPhoneNumber,
 					items.getAttribute("data-validate-country"),
 				).filter((value) => Number(value));
+				// controlliamo se le prime cifre corrispondono alle cifre di prefisso nell'oggetto validatore
+				// prefixCheck(arrPhoneNumber,
+				// 	items.getAttribute("data-validate-country"))
 
+				console.log('prefix validation', prefixCheck(arrPhoneNumber,
+					items.getAttribute("data-validate-country")))
 				console.log('fine', arrPhoneNumber);
 			}
 		});
