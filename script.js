@@ -1,14 +1,14 @@
 $(document).ready(function () {
 	'use strict'
 
-	//£ oggetto per il confronto tra i dati inseriti
+	//^ oggetto per il confronto tra i dati inseriti
 	const objLocalizationPath = {
 		italia: {
 			localization: "italia",
+			prefixInternational: ["+39", "0039"],
 			cellular: {
 				minLength: 6,
 				maxLength: 10,
-				prefixCellular: ["+39", "0039"],
 				prefixCompanyCellular: [
 					"330",
 					"333",
@@ -62,7 +62,7 @@ $(document).ready(function () {
 			homePhone: {
 				minLength: 6,
 				maxLength: 10,
-				prefixHomePhone: [
+				prefixRegionHomePhone: [
 					"004191",
 					"010",
 					"011",
@@ -349,7 +349,7 @@ $(document).ready(function () {
 				"377",
 				"378",
 			],
-			prefixHomePhone: [
+			prefixRegionHomePhone: [
 				"004191",
 				"010",
 				"011",
@@ -586,7 +586,7 @@ $(document).ready(function () {
 	};
 
 	function filterNumberNotZero(value) {
-		if (value == 0) {
+		if (value == '0') {
 			return value
 		} else if (Number(value)) {
 			return value
@@ -596,66 +596,118 @@ $(document).ready(function () {
 
 
 	}
-
-	//£ funzione per sanitize il numero di telefono e restituirlo senza l'eventuale prefisso
-	function prefixCutCellular(arr, country, type) {
-		const x = arr;
-		objLocalizationPath[country][type].prefixCellular.map((items, index) => {
-			//£ creiamo un array con i primi valori inseriti dall'utente in riferimento al controllo che andiamo a fare 
-			//£ i primi 3 se il controllo lo andiamo a fare con un campo che ha 3 valori e 4 su 4 e così via
+	// !creiamo una funzione unica per iil check dei prefissi per per cellular che per home 
+	function prefixCutCheckAll(arr, country, type) {
+		let numberArr = arr
+		let objPathType;
+		let isValid = false;
+		//^ in base all type settima una variabile per andare a fare il ciclo e il controllo 
+		if (type == 'cellular') {
+			objPathType = 'prefixCompanyCellular';
+		} else if (type == 'homePhone') {
+			objPathType = 'prefixRegionHomePhone';
+		}
+		//^  cicliamo e tagliamo il prefisso internazionale se è inserito
+		objLocalizationPath[country].prefixInternational.map((items, index) => {
+			//^ ciclando sul prefisso internazionale nell'oggetto di validazione andiamo a fare un check sul numero inserito dall'utente ed eventualmente andiamo a talgiare lo stessa quantità di numeri per farci tornare un numero pulito senza prefisso internazionale
 			let arrPrefix = [];
 			for (let i = 0; i < items.length; i++) {
-				arrPrefix.push(x[i])
+				arrPrefix.push(numberArr[i])
 			}
 			if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
-				x.splice(0, items.length);
+				numberArr.splice(0, items.length);
 			}
 		});
-		return x;
-	};
-	function checkPrefixCompanyCellular(arr, country, type) {
-		//- const x = arr;
-		let isValid = false;
 
-		objLocalizationPath[country][type].prefixCompanyCellular.forEach((items) => {
+		numberArr = arr.filter((value) => filterNumberNotZero(value));
+
+
+		//^ eseguimao il check del prefisso di cellulare o del prefisso regionale per validare il numero
+		objLocalizationPath[country][type][objPathType].forEach((items) => {
 			// -console.log('items company', items);
 			//- console.log('arr', arr);
 			let arrPrefix = [];
 			for (let i = 0; i < items.length; i++) {
-				arrPrefix.push(arr[i])
+				arrPrefix.push(numberArr[i])
 			}
 			if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
 				isValid = true;
 			}
+		});
 
-		});
+		//^ check length numero senza prefisso spazzi e caratteri non numerici
+
+
+		isValid = numberArr.length >= objLocalizationPath[country][type].minLength && numberArr.length <= objLocalizationPath[country][type].maxLength ? true : false
+
+		console.log('validation', isValid);
 		return isValid;
-	};
-	function checkPrefixHomePhone(arr, country, type) {
-		//£ filtriamo il valore dell'arr per pulirlo da elementi che non sono numeri
-		const x = arr.filter((value) => filterNumberNotZero(value));
-		console.log('arr', x)
-		//£ mettiamo in un array un numero di campi uguali a quelli presenti con l'elemento di confronto
-		objLocalizationPath[country][type].prefixHomePhone.map((items, index) => {
-			let arrPrefix = [];
-			for (let i = 0; i < items.length; i++) {
-				arrPrefix.push(x[i])
-			}
-			//£ se troviamo il mech tra l'elemento arrPrefix e gli elementi presenti in array andiamo a validare il record
-			if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
-				console.log('prefix trovato', arrPrefix.join(""), JSON.stringify(items))
-			}
-		});
-		console.log(x)
-		// return x;
-	};
+	}
+
+
+
+
+
+
+	//^ funzione per sanitize il numero di telefono e restituirlo senza l'eventuale prefisso
+	// function prefixCutCellular(arr, country, type) {
+	// 	const x = arr;
+	// 	objLocalizationPath[country][type].prefixCellular.map((items, index) => {
+	// 		//^ creiamo un array con i primi valori inseriti dall'utente in riferimento al controllo che andiamo a fare 
+	// 		//^ i primi 3 se il controllo lo andiamo a fare con un campo che ha 3 valori e 4 su 4 e così via
+	// 		let arrPrefix = [];
+	// 		for (let i = 0; i < items.length; i++) {
+	// 			arrPrefix.push(x[i])
+	// 		}
+	// 		if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
+	// 			x.splice(0, items.length);
+	// 		}
+	// 	});
+	// 	return x;
+	// };
+	// function checkPrefixCompanyCellular(arr, country, type) {
+	// 	//- const x = arr;
+	// 	let isValid = false;
+
+	// 	objLocalizationPath[country][type].prefixCompanyCellular.forEach((items) => {
+	// 		// -console.log('items company', items);
+	// 		//- console.log('arr', arr);
+	// 		let arrPrefix = [];
+	// 		for (let i = 0; i < items.length; i++) {
+	// 			arrPrefix.push(arr[i])
+	// 		}
+	// 		if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
+	// 			isValid = true;
+	// 		}
+
+	// 	});
+	// 	return isValid;
+	// };
+	// function checkprefixRegionHomePhone(arr, country, type) {
+	// 	//^ filtriamo il valore dell'arr per pulirlo da elementi che non sono numeri
+	// 	const x = arr.filter((value) => filterNumberNotZero(value));
+	// 	console.log('arr', x)
+	// 	//^ mettiamo in un array un numero di campi uguali a quelli presenti con l'elemento di confronto
+	// 	objLocalizationPath[country][type].prefixRegionHomePhone.map((items, index) => {
+	// 		let arrPrefix = [];
+	// 		for (let i = 0; i < items.length; i++) {
+	// 			arrPrefix.push(x[i])
+	// 		}
+	// 		//^ se troviamo il mech tra l'elemento arrPrefix e gli elementi presenti in array andiamo a validare il record
+	// 		if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
+	// 			console.log('prefix trovato', arrPrefix.join(""), JSON.stringify(items))
+	// 		}
+	// 	});
+	// 	console.log(x)
+	// 	// return x;
+	// };
 
 	$(".form").submit(function (e) {
-		//£ preveniamo il default
+		//^ preveniamo il default
 		e.preventDefault();
-		//£ prendiamo tutti i valori delle input
+		//^ prendiamo tutti i valori delle input
 		$(".form input").each(function (index, items) {
-			//£ controlliamo che valore è richiesto nel labeel e attiviamo la validazione di riferimento 
+			//^ controlliamo che valore è richiesto nel labeel e attiviamo la validazione di riferimento 
 			let isValid = false;
 
 			// ! VALIDAZIONE NUMERO DI TELEFONO
@@ -663,33 +715,37 @@ $(document).ready(function () {
 			// * 2- FISSO
 
 			if (items.value) {
-				if (items.getAttribute("data-validate-type") == "cellular") {
-					//- console.log("items phone value", items.value.trim());
-					//£ prediamo il valore dell'input lo dividiamo in un array con tutti i caratteri
-					let arrPhoneNumber = items.value.trim().split("");
-					//£ passiamo per la funzione di prefixCutCellular che controlla se è stato messo il prefisso e lo taglia
-					//£ una volta tagliato il prefisso (se lo ha) prendiamo solo i valori numerici inseriti andando a tagliare il resto (spazzi o altri caratteri)
-					arrPhoneNumber = prefixCutCellular(
-						arrPhoneNumber,
-						items.getAttribute("data-validate-country"),
-						items.getAttribute("data-validate-type")
-					).filter((value) => Number(value));
-					//£ controlliamo se le prime cifre corrispondono alle cifre di prefisso nell'oggetto validatore
-					//£ Controlliamo se la lunghezza del numero senza prefisso rientra tra i parametri fissati nell'oggetto di validazione
-					//- checkPrefixCompanyCellular(arrPhoneNumber,
-					//- 	items.getAttribute("data-validate-country"))
-					isValid = checkPrefixCompanyCellular(arrPhoneNumber,
-						items.getAttribute("data-validate-country"),
-						items.getAttribute("data-validate-type")) && arrPhoneNumber.length >= objLocalizationPath[items.getAttribute("data-validate-country")][items.getAttribute("data-validate-type")].minLength && arrPhoneNumber.length <= objLocalizationPath[items.getAttribute("data-validate-country")][items.getAttribute("data-validate-type")].maxLength ? true : false;
-					//- console.log('fine', arrPhoneNumber);
-					//- console.log('isValid', isValid)
-					//- console.log('items', items)
-					items.value = arrPhoneNumber.join("");
-				} else if (items.getAttribute("data-validate-type") == "homePhone") {
-					let arrHomePhoneNumber = items.value.trim().split("");
-					arrHomePhoneNumber = checkPrefixHomePhone(arrHomePhoneNumber, items.getAttribute("data-validate-country"), items.getAttribute("data-validate-type"))
 
-				}
+				let arrPhoneNumber = items.value.trim().split("");
+
+				isValid = prefixCutCheckAll(
+					arrPhoneNumber,
+					items.getAttribute("data-validate-country"),
+					items.getAttribute("data-validate-type")
+				)
+
+
+				// if (items.getAttribute("data-validate-type") == "cellular") {
+				// 	//- console.log("items phone value", items.value.trim());
+				// 	//^ prediamo il valore dell'input lo dividiamo in un array con tutti i caratteri
+				// 	//^ passiamo per la funzione di prefixCutCellular che controlla se è stato messo il prefisso e lo taglia
+				// 	//^ una volta tagliato il prefisso (se lo ha) prendiamo solo i valori numerici inseriti andando a tagliare il resto (spazzi o altri caratteri)
+				// 	//^ controlliamo se le prime cifre corrispondono alle cifre di prefisso nell'oggetto validatore
+				// 	//^ Controlliamo se la lunghezza del numero senza prefisso rientra tra i parametri fissati nell'oggetto di validazione
+				// 	//- checkPrefixCompanyCellular(arrPhoneNumber,
+				// 	//- 	items.getAttribute("data-validate-country"))
+				// 	isValid = checkPrefixCompanyCellular(arrPhoneNumber,
+				// 		items.getAttribute("data-validate-country"),
+				// 		items.getAttribute("data-validate-type")) && arrPhoneNumber.length >= objLocalizationPath[items.getAttribute("data-validate-country")][items.getAttribute("data-validate-type")].minLength && arrPhoneNumber.length <= objLocalizationPath[items.getAttribute("data-validate-country")][items.getAttribute("data-validate-type")].maxLength ? true : false;
+				// 	//- console.log('fine', arrPhoneNumber);
+				// 	//- console.log('isValid', isValid)
+				// 	//- console.log('items', items)
+				// 	items.value = arrPhoneNumber.join("");
+				// } else if (items.getAttribute("data-validate-type") == "homePhone") {
+				// 	let arrHomePhoneNumber = items.value.trim().split("");
+				// 	arrHomePhoneNumber = checkprefixRegionHomePhone(arrHomePhoneNumber, items.getAttribute("data-validate-country"), items.getAttribute("data-validate-type"))
+
+				// }
 			}
 
 
