@@ -624,8 +624,6 @@ $(document).ready(function () {
 
 		//^ eseguimao il check del prefisso di cellulare o del prefisso regionale per validare il numero
 		objLocalizationPath[country][type][objPathType].forEach((items) => {
-			// -console.log('items company', items);
-			//- console.log('arr', arr);
 			let arrPrefix = [];
 			for (let i = 0; i < items.length; i++) {
 				arrPrefix.push(numberArr[i])
@@ -710,49 +708,22 @@ $(document).ready(function () {
 			//^ controlliamo che valore è richiesto nel labeel e attiviamo la validazione di riferimento 
 			let isValid = false;
 
-			// ! VALIDAZIONE NUMERO DI TELEFONO
-			// * 1- CELLULARE
-			// * 2- FISSO
+
 
 			if (items.value) {
+				// ! VALIDAZIONE NUMERO DI TELEFONO
+				// * CELLULARE e FISSO
 
-				let arrPhoneNumber = items.value.trim().split("");
-
-				isValid = prefixCutCheckAll(
-					arrPhoneNumber,
-					items.getAttribute("data-validate-country"),
-					items.getAttribute("data-validate-type")
-				)
-
-
-				// if (items.getAttribute("data-validate-type") == "cellular") {
-				// 	//- console.log("items phone value", items.value.trim());
-				// 	//^ prediamo il valore dell'input lo dividiamo in un array con tutti i caratteri
-				// 	//^ passiamo per la funzione di prefixCutCellular che controlla se è stato messo il prefisso e lo taglia
-				// 	//^ una volta tagliato il prefisso (se lo ha) prendiamo solo i valori numerici inseriti andando a tagliare il resto (spazzi o altri caratteri)
-				// 	//^ controlliamo se le prime cifre corrispondono alle cifre di prefisso nell'oggetto validatore
-				// 	//^ Controlliamo se la lunghezza del numero senza prefisso rientra tra i parametri fissati nell'oggetto di validazione
-				// 	//- checkPrefixCompanyCellular(arrPhoneNumber,
-				// 	//- 	items.getAttribute("data-validate-country"))
-				// 	isValid = checkPrefixCompanyCellular(arrPhoneNumber,
-				// 		items.getAttribute("data-validate-country"),
-				// 		items.getAttribute("data-validate-type")) && arrPhoneNumber.length >= objLocalizationPath[items.getAttribute("data-validate-country")][items.getAttribute("data-validate-type")].minLength && arrPhoneNumber.length <= objLocalizationPath[items.getAttribute("data-validate-country")][items.getAttribute("data-validate-type")].maxLength ? true : false;
-				// 	//- console.log('fine', arrPhoneNumber);
-				// 	//- console.log('isValid', isValid)
-				// 	//- console.log('items', items)
-				// 	items.value = arrPhoneNumber.join("");
-				// } else if (items.getAttribute("data-validate-type") == "homePhone") {
-				// 	let arrHomePhoneNumber = items.value.trim().split("");
-				// 	arrHomePhoneNumber = checkprefixRegionHomePhone(arrHomePhoneNumber, items.getAttribute("data-validate-country"), items.getAttribute("data-validate-type"))
-
-				// }
+				if (items.getAttribute("data-validate-type") == 'cellular' || 'homePhone') {
+					let arrPhoneNumber = items.value.trim().split("");
+					isValid = prefixCutCheckAll(
+						arrPhoneNumber,
+						items.getAttribute("data-validate-country"),
+						items.getAttribute("data-validate-type")
+					)
+				}
 			}
-
-
-
-
-
-
+			//^ cambiamo la classe sul front end in basse all ckeck della funzione
 			$(items).removeClass('is-valid').removeClass('is-invalid').addClass(isValid ? 'is-valid' : 'is-invalid')
 		});
 	});
