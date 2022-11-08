@@ -19,7 +19,7 @@
 				<div class="mb-3">
 					<label for="cellularNumber" class="form-label">Numero di telefono cellulare</label>
 					<input type="tel" id="cellularNumber" class="form-control"
-						placeholder="numero di telefono cellulare" minlength="8" data-validate-country="italy"
+						placeholder="numero di telefono cellulare" minlength="8" data-validate-country="IT"
 						data-validate-type="cellular" />
 					<div class="valid-feedback">
 						Numero di telefono cellulare valido
@@ -31,7 +31,7 @@
 				<div class="mb-3">
 					<label for="homePhone" class="form-label">Numero di telefono fisso</label>
 					<input type="tel" id="homePhone" class="form-control" placeholder="numero di telefono fisso"
-						minlength="8" data-validate-country="italy" data-validate-type="homePhone" />
+						minlength="8" data-validate-country="IT" data-validate-type="homePhone" />
 					<div class="valid-feedback">
 						Numero di telefono fisso valido
 					</div>
@@ -314,6 +314,28 @@
 					</div>
 					<div class="invalid-feedback">
 						Codice postale non valido
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="fiscalCode" class="form-label">Partita iva</label>
+					<input type="text" id="fiscalCode" class="form-control" placeholder="Tax ID" minlength="2"
+						data-validate-type="fiscalCode" />
+					<div class="valid-feedback">
+						Tax ID valido
+					</div>
+					<div class="invalid-feedback">
+						Tax ID non valido
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="taxID" class="form-label">Codice fiscale</label>
+					<input type="text" id="taxID" class="form-control" placeholder="Codice fiscale" minlength="2"
+						data-validate-type="taxID" />
+					<div class="valid-feedback">
+						Codice fiscale valido
+					</div>
+					<div class="invalid-feedback">
+						Codice fiscale non valido
 					</div>
 				</div>
 
