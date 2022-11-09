@@ -1,24 +1,24 @@
 // import class da un file esterno
-import User from '../class/userClass.js';
+import Validator from '../class/classValidator.js';
 
 // Utilizzo:
+// new Validator('.form').validationForm;
+
+
 $(document).ready(function () {
     'use strict'
-
     $(".form").submit(function (e) {
-
         e.preventDefault();
-
         $(".form input").each(function (index, items) {
-            //^ controlliamo che valore è richiesto nel labeel e attiviamo la validazione di riferimento 
-            const isValid = new User(items).cLog();
+            let isValid = false
+
+            if (items.value) {
+                isValid = new Validator(items, 'IT').validationForm;
+            }
 
 
-            console.log('isValid?', isValid)
-            //^ cambiamo la classe sul front end in basse all check della funzione utilizzando bootstrap
 
+            $(items).removeClass('is-valid').removeClass('is-invalid').addClass(isValid ? 'is-valid' : 'is-invalid')
         });
     });
 });
-
-
