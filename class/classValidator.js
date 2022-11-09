@@ -125,6 +125,7 @@ export default class Validator {
 
 
         //^ check del prefisso di cellulare o del prefisso regionale per validare il numero
+        console.log(objLocalizationPath[country][type][objPathType])
         objLocalizationPath[country][type][objPathType].forEach((items) => {
             let arrPrefix = [];
             for (let i = 0; i < items.length; i++) {
@@ -136,7 +137,9 @@ export default class Validator {
         });
 
         //^ check length numero senza prefisso spazzi e caratteri non numerici
-        isValid = numberArr.length >= objLocalizationPath[country][type].minLength && numberArr.length <= objLocalizationPath[country][type].maxLength ? true : false;
+        if (isValid) {
+            isValid = numberArr.length >= objLocalizationPath[country][type].minLength && numberArr.length <= objLocalizationPath[country][type].maxLength ? true : false;
+        }
 
         //! return
         return isValid;
