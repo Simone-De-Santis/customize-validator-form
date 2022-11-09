@@ -14,11 +14,19 @@ export default class Validator {
     constructor(items, localization) {
         this.items = items
         this.localization = localization
-
-
     }
     //# Getter
-    get validationForm() {
+
+
+
+
+
+
+
+
+
+    // # Metodi
+    validationForm() {
         // ! VALIDAZIONE NUMERO DI CELLULARE
         if (this.items.getAttribute("data-validate-type") == 'cellular') {
             let arrPhoneNumber = this.items.value.trim().split("");
@@ -56,12 +64,7 @@ export default class Validator {
         }
     }
 
-
-
-    //# Metodi
-
-    //^ sanitize number
-
+    // ^ sanitize number
     /**
      * @todo La funzione prende un valore e lo restituisce se è uguale a zero o se è un numero
      * @todo Funzione usata in concomitanza di un filter
@@ -81,7 +84,6 @@ export default class Validator {
             return
         }
     }
-
 
     //^ validazione numero di telefono
 
