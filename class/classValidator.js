@@ -11,10 +11,6 @@ import { objLocalizationPath } from './path/localizationPath.js';
  * @param  {} localization stinga Uppercase unicode della localizzazione (IT,EN,FR..ecc..)
  */
 export default class Validator {
-    /**
-     * @param  {[]} items
-     * @param  {} localization
-     */
     constructor(items, localization) {
         this.items = items
         this.localization = localization
@@ -65,6 +61,7 @@ export default class Validator {
     //# Metodi
 
     //^ sanitize number
+
     /**
      * @todo La funzione prende un valore e lo restituisce se è uguale a zero o se è un numero
      * @todo Funzione usata in concomitanza di un filter
@@ -87,6 +84,7 @@ export default class Validator {
 
 
     //^ validazione numero di telefono
+
     /**
      * @todo funzione unica per il check dei prefissi per cellular e per home
      * @param  {Array} arr array con tutti i valori inseriti nei campi cellular o homPhone

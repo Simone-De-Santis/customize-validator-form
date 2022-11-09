@@ -11,13 +11,9 @@ $(document).ready(function () {
         e.preventDefault();
         $(".form input").each(function (index, items) {
             let isValid = false
-
             if (items.value) {
                 isValid = new Validator(items, 'IT').validationForm;
             }
-
-
-
             $(items).removeClass('is-valid').removeClass('is-invalid').addClass(isValid ? 'is-valid' : 'is-invalid')
         });
     });
