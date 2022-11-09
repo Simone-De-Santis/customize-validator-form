@@ -7,7 +7,15 @@ import Validator from '../class/classValidator2.js';
 
 $(document).ready(function () {
     'use strict'
-    new Validator
+
+    let param_1 = {
+        selectorForm: "form",
+        foo: "bar"
+    };
+
+    var form_ship = new Validator(
+        param_1.selectorForm
+    );
 });
 
 
