@@ -22,6 +22,7 @@ export default function (params, testo) {
             $.each(e.target, function (index, element) {
                 let isValid = true;
                 let country = param.localization
+                let elVal = $.trim(element.value)
                 //! Se viene settato che tutti i campi devono essere required
                 if (param.isAllRequired.isActive) {
                     if (!$.trim(element.value)) {
@@ -36,23 +37,23 @@ export default function (params, testo) {
                     }
                 }
                 //!  Controllo email 
-                if (param.validationMail.isActive && element.getAttribute("data-validate-type") == 'email' && $.trim(element.value)) {
-                    isValid = validationEmail(element.value);
+                if (param.validationMail.isActive && element.getAttribute("data-validate-type") == 'email' && elVal) {
+                    isValid = validationEmail(elVal);
                     setMessage(element, isValid, param.validationMail)
                 }
                 //! Postal code
-                if (param.validationPostalCode.isActive && element.getAttribute("data-validate-type") == 'postalCode' && $.trim(element.value)) {
-                    isValid = checkPostalCode(element.value, country);
+                if (param.validationPostalCode.isActive && element.getAttribute("data-validate-type") == 'postalCode' && elVal) {
+                    isValid = checkPostalCode(elVal, country);
                     setMessage(element, isValid, param.validationPostalCode)
                 }
                 //! TaxId
-                if (param.validationTaxId.isActive && element.getAttribute("data-validate-type") == 'taxId' && $.trim(element.value)) {
-                    isValid = checkTaxId(element.value, country);
+                if (param.validationTaxId.isActive && element.getAttribute("data-validate-type") == 'taxId' && elVal) {
+                    isValid = checkTaxId(elVal, country);
                     setMessage(element, isValid, param.validationTaxId)
                 }
                 //! Validazione numero di telefono
-                if (param.validationPhone.isActive && element.getAttribute("data-validate-type") == 'phone' && $.trim(element.value)) {
-                    isValid = checkTaxId(element.value, country);
+                if (param.validationPhone.isActive && element.getAttribute("data-validate-type") == 'phone' && elVal) {
+                    isValid = validationPhonNumber(elVal, country, element.getAttribute("data-value-type"), param.validationPhone);
                     setMessage(element, isValid, param.validationPhone)
                 }
 
@@ -122,7 +123,72 @@ export default function (params, testo) {
 
 
     //^ validazione numero di telefono
+    /**
+  * @todo funzione unica per il check dei prefissi per cellular e per home
+  * @param  {Array} arr array con tutti i valori inseriti nei campi cellular o homPhone
+  * @param  {string} country localizzazione passata dal costruttore (IT,EN,FR..ecc..) che utilizzeremo per navigare nell'oggetto di validazione e rilevare il campo da validare
+  * @param  {string} type stringa passata dal data attribute dell'elemento che useremo per navigare nell'oggetto di validazione
+  * @return {boolean} isValid valore di ritorno se l'array ha passato la validazione (TRUE||FALSE)
+  * 
+  * @author Enomis
+  * @version 1.0
+ */
+    function validationPhonNumber(value, country, type, param) {
+        let numberArr = value.split('')
+        console.log('type', type)
+        console.log('number arr', numberArr)
 
+        // variabile che in base al type andremo a settare per navigare nell'oggetto di validazione
+        let objPathTypePrefix;
+        let isValid = false;
+
+        //^ in base all type settimo una variabile per andare a fare il ciclo e il controllo 
+        if (type == 'cellular') {
+            objPathTypePrefix = 'prefixCompanyCellular';
+        } else if (type == 'homePhone') {
+            objPathTypePrefix = 'prefixRegionHomePhone';
+        }
+
+        //^  cicliamo e tagliamo il prefisso internazionale se è inserito
+        objLocalizationPath[country].prefixInternational.map((items, index) => {
+            //^ ciclando sul prefisso internazionale nell'oggetto di validazione andiamo a fare un check sul numero inserito dall'utente ed eventualmente andiamo a talgiare lo stessa quantità di numeri per farci tornare un numero pulito senza prefisso internazionale
+            let arrPrefix = [];
+            for (let i = 0; i < items.length; i++) {
+                arrPrefix.push(numberArr[i])
+            }
+            if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
+                numberArr.splice(0, items.length);
+            }
+        });
+
+        //^ filtriamo l'arr per ripulirlo restituendoci numberArr con solo numeri
+        numberArr.filter((value) => filterNumberNotZero(value));
+
+
+        //^ check del prefisso di cellulare o del prefisso regionale per validare il numero
+        if (param.validationPrefixCompanyPhoneOrRegion) {
+            console.log('validation prefisso')
+            objLocalizationPath[country][type][objPathTypePrefix].forEach((items) => {
+                let arrPrefix = [];
+                for (let i = 0; i < items.length; i++) {
+                    arrPrefix.push(numberArr[i])
+                }
+                if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
+                    isValid = true;
+                }
+            });
+        }
+
+
+        //^ check length numero senza prefisso spazzi e caratteri non numerici
+        if (isValid) {
+            isValid = numberArr.length >= objLocalizationPath[country][type].minLength && numberArr.length <= objLocalizationPath[country][type].maxLength ? true : false;
+        }
+
+        //! return
+        return isValid;
+    }
+    // ######old######
     /**
      * @todo funzione unica per il check dei prefissi per cellular e per home
      * @param  {Array} arr array con tutti i valori inseriti nei campi cellular o homPhone
@@ -163,7 +229,6 @@ export default function (params, testo) {
 
 
         //^ check del prefisso di cellulare o del prefisso regionale per validare il numero
-        console.log(objLocalizationPath[country][type][objPathType])
         objLocalizationPath[country][type][objPathType].forEach((items) => {
             let arrPrefix = [];
             for (let i = 0; i < items.length; i++) {
@@ -173,6 +238,7 @@ export default function (params, testo) {
                 isValid = true;
             }
         });
+
 
         //^ check length numero senza prefisso spazzi e caratteri non numerici
         if (isValid) {
@@ -192,11 +258,11 @@ export default function (params, testo) {
      * @author Enomis
      * @version 1.0
     */
-    function validationEmail(email) {
+    function validationEmail(value) {
         ////se non ho inserito nulla nel campo return false
         //// if (email == '') { return false; }
         //^ verifico se è un indirizzo valido
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
             return true;
         }
         else {

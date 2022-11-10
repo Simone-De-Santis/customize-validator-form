@@ -41,9 +41,10 @@ $(document).ready(function () {
         },
         validationPhone: {
             isActive: true,
+            validationPrefixCompanyPhoneOrRegion: true,
             message: {
                 invalidMessage: 'Numero di telefono non valido',
-                validMessage: 'Telefono non valido '
+                validMessage: 'Telefono valido '
             }
         },
 
