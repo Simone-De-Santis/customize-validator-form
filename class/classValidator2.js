@@ -168,15 +168,12 @@ export default function (params, testo) {
         let companyPrefixValue = []
         let checkPrefixCompanyRegionUser;
         // variabile true o false se viene eseguito almeno un controllo sul numero per validazione finale 
-        let performedCheck;
-        let valueReturn
+        let valueReturn;
+
+        let performedCheck = false;
 
 
-        if (param.normalizationNumber || param.acceptNumberWithInternationalCode || param.cutPrefixInternationalToResault || param.validationPrefixCompanyPhoneOrRegion) {
-            performedCheck = true;
-        } else {
-            performedCheck = false
-        }
+
 
 
 
@@ -203,9 +200,10 @@ export default function (params, testo) {
                 }
             }
         });
-
         //^ check del prefisso di cellulare o del prefisso regionale per validare il numero
         if (param.validationPrefixCompanyPhoneOrRegion) {
+            performedCheck = true;
+
             objLocalizationPath[country][type][objPathTypePrefix].forEach((items) => {
                 let arrPrefixCompany = [];
                 for (let i = 0; i < items.length; i++) {
@@ -218,35 +216,41 @@ export default function (params, testo) {
                         companyPrefixValue = [...arrPrefixCompany];
                         checkPrefixCompanyRegionUser = true;
                         resultChecked = true;
+                        errorMessage = param.message.validMessage;
+                        console.log('prefisso company trovato')
+
                     } else {
+
                         resultChecked = false;
                         errorMessage = param.message.errorPrefixCompanyRegion;
+                        console.log('prefisso company non trovato')
                     }
 
                 }
 
             });
         }
-
-
-
-
         //^ controlliamo il length
-        if (!errorMessage || validationLength) {
+        if (param.validationLength) {
+            performedCheck = true;
             resultChecked = isValidLengthNumber(numberArr, country, type)
             errorMessage = resultChecked ? param.message.validMessage : param.message.errorLengthMessage;
         }
 
-        //^ tramite regex controlliamo se tutto quello inserito è un numero 
-        //# valido solo se è stato applicato almeno un controllo precedentemente
-        if (performedCheck) {
-            resultChecked = resultChecked ? myIsNumber(numberArr.join('')) : resultChecked;
-            errorMessage = errorMessage ? errorMessage : (resultChecked ? param.message.validMessage : param.message.invalidMessage);
 
-        } else {
+
+
+        if (!performedCheck) {
+            console.log('nessun controllo eseguito');
             resultChecked = myIsNumber(numberArr.join(''));
             errorMessage = errorMessage ? errorMessage : (resultChecked ? param.message.validMessage : param.message.invalidMessage);
+        } else {
+            //^ tramite regex controlliamo se tutto quello inserito è un numero 
+            //# valido solo se è stato applicato almeno un controllo precedentemente
+            resultChecked = resultChecked ? myIsNumber(numberArr.join('')) : resultChecked;
+            errorMessage = errorMessage ? errorMessage : (resultChecked ? param.message.validMessage : param.message.invalidMessage);
         }
+
 
 
         // modifica del valore di ritorno
@@ -258,12 +262,13 @@ export default function (params, testo) {
         }
 
         //! return
-
-        return result = {
+        result = {
             isValid: resultChecked,
             message: errorMessage,
             valueReturn: valueReturn
         }
+        console.log('result', result)
+        return result
         // return isValid;
 
 
