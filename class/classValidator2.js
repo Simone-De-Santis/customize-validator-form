@@ -212,9 +212,8 @@ export default function (params, testo) {
         //# eseguiamo un controllo solo sul length 
         //# eseguiamo un controllo inserito solo numeri
         if (param.normalizationNumber === false && param.cutPrefixInternationalToResault === false && param.acceptNumberWithInternationalCode === true && param.validationPrefixCompanyPhoneOrRegion === false) {
-
-            let numberOriginal = numberArr;
-            let numberValidation = numberValidation.push(numberOriginal);
+            let numberOriginal = [...numberArr];
+            let numberValidation = [...numberOriginal];
 
             let checkPrefixInternationalUser = false;
             // cicliamo sui prefissi internazionali e controlliamo se è stato inserito lo tagliamo e eseguiamo il controllo sul numero restante e restituiamo il numero completo o il numero senza prefisso 
@@ -227,7 +226,8 @@ export default function (params, testo) {
                 if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items) && param.acceptNumberWithInternationalCode) {
                     // eliminiamo il prefisso internazionale dal' array
                     checkPrefixInternationalUser = true
-                    numberOriginal.splice(items.length);
+                    numberValidation.splice(0, items.length);
+                    console.log('number original1', numberOriginal)
 
                 }
             });
