@@ -73,6 +73,8 @@ export default function (params, testo) {
                     isValid = resultValidation.isValid;
                     messsageValidation = (resultValidation.message ? resultValidation.message : (isValid ? param.validationPhone.message.validMessage : param.validationPhone.message.invalidMessage));
 
+                    console.log('valore element', resultValidation)
+                    element.value = resultValidation.valueReturn
 
                     insertMessage(element, isValid, messsageValidation)
 
@@ -158,14 +160,28 @@ export default function (params, testo) {
         // variabile che in base al type andremo a settare per navigare nell'oggetto di validazione
         let objPathTypePrefix;
         // dividiamo il value in un array per andare ad eseguire i vari controlli
-        let numberArr = value.split('');
+        // filtriamo i valori vuoti
+        let numberArr = value.split('').filter(function (currentValue, index, arr) { return currentValue != ' ' });
         // creiamo una variabile dove inseriremo i i prefissi se presenti
         let internationalPrefixValue = [];
         let checkPrefixInternationalUser;
-        let companyPrefixValue
+        let companyPrefixValue = []
+        let checkPrefixCompanyRegionUser;
+        // variabile true o false se viene eseguito almeno un controllo sul numero per validazione finale 
+        let performedCheck;
+        let valueReturn
 
 
-        //#1 in base al type settimo una variabile per andare a fare il ciclo e il controllo 
+        if (param.normalizationNumber || param.acceptNumberWithInternationalCode || param.cutPrefixInternationalToResault || param.validationPrefixCompanyPhoneOrRegion) {
+            performedCheck = true;
+        } else {
+            performedCheck = false
+        }
+
+
+
+
+        //# in base al type settimo una variabile per andare a fare il ciclo e il controllo 
         if (type == 'cellular') {
             objPathTypePrefix = 'prefixCompanyCellular';
         } else if (type == 'homePhone') {
@@ -174,47 +190,79 @@ export default function (params, testo) {
 
         // cicliamo sui prefissi internazionali e puschiamo nella variabile i primi numeri dell
         objLocalizationPath[country].prefixInternational.map((items, index) => {
+            let prefixCurrent = [];
             for (let i = 0; i < items.length; i++) {
-                internationalPrefixValue.push(numberArr[i])
+                prefixCurrent.push(numberArr[i])
             }
-
-            if (JSON.stringify(internationalPrefixValue.join("")) == JSON.stringify(items) && param.acceptNumberWithInternationalCode) {
-                // controlliamo se il prefisso internazionale inserito è corretto
-                checkPrefixInternationalUser = true
-
-                if (param.cutPrefixInternationalToResault) {
-                    // eliminiamo il prefisso internazionale dal' array
+            if (param.acceptNumberWithInternationalCode) {
+                if (JSON.stringify(prefixCurrent.join("")) == JSON.stringify(items)) {
+                    // controlliamo se il prefisso internazionale inserito è corretto
+                    checkPrefixInternationalUser = true
                     numberArr.splice(0, items.length);
+                    internationalPrefixValue = [...prefixCurrent]
                 }
             }
-
         });
 
+        //^ check del prefisso di cellulare o del prefisso regionale per validare il numero
+        if (param.validationPrefixCompanyPhoneOrRegion) {
+            objLocalizationPath[country][type][objPathTypePrefix].forEach((items) => {
+                let arrPrefixCompany = [];
+                for (let i = 0; i < items.length; i++) {
+                    arrPrefixCompany.push(numberArr[i])
+                }
+                if (!checkPrefixCompanyRegionUser) {
+
+                    if (JSON.stringify(arrPrefixCompany.join("")) == JSON.stringify(items)) {
+                        resultChecked = param.validationPrefixCompanyPhoneOrRegion ? true : resultChecked;
+                        companyPrefixValue = [...arrPrefixCompany];
+                        checkPrefixCompanyRegionUser = true;
+                        resultChecked = true;
+                    } else {
+                        resultChecked = false;
+                        errorMessage = param.message.errorPrefixCompanyRegion;
+                    }
+
+                }
+
+            });
+        }
 
 
-
-
-
-
-
-
-        //^ tramite regex controlliamo se tutto quello inserito è un numero
-        resultChecked = myIsNumber(numberArr.join(''));
-        errorMessage = resultChecked ? param.validMessage : param.invalidMessage;
 
 
         //^ controlliamo il length
-        if (resultChecked) {
+        if (!errorMessage || validationLength) {
             resultChecked = isValidLengthNumber(numberArr, country, type)
-            errorMessage = resultChecked ? param.validMessage : param.errorLengthMessage;
+            errorMessage = resultChecked ? param.message.validMessage : param.message.errorLengthMessage;
+        }
+
+        //^ tramite regex controlliamo se tutto quello inserito è un numero 
+        //# valido solo se è stato applicato almeno un controllo precedentemente
+        if (performedCheck) {
+            resultChecked = resultChecked ? myIsNumber(numberArr.join('')) : resultChecked;
+            errorMessage = errorMessage ? errorMessage : (resultChecked ? param.message.validMessage : param.message.invalidMessage);
+
+        } else {
+            resultChecked = myIsNumber(numberArr.join(''));
+            errorMessage = errorMessage ? errorMessage : (resultChecked ? param.message.validMessage : param.message.invalidMessage);
+        }
+
+
+        // modifica del valore di ritorno
+
+        if (param.acceptNumberWithInternationalCode) {
+            valueReturn = (param.cutPrefixInternationalToResault ? numberArr : internationalPrefixValue.concat(numberArr)).join('');
+        } else {
+            valueReturn = numberArr.join('')
         }
 
         //! return
 
         return result = {
             isValid: resultChecked,
-            message: errorMessage
-
+            message: errorMessage,
+            valueReturn: valueReturn
         }
         // return isValid;
 
