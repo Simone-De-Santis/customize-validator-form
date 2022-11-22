@@ -14,29 +14,29 @@ $(document).ready(function () {
         isAllRequired: {
             isActive: true,
             message: {
-                invalidMessage: 'Il campo non può essere vuoto',
-                validMessage: 'Campo convalidato'
+                invalidMessage: 'Il campo non può essere vuoto (client)',
+                validMessage: 'Campo convalidato (client)'
             }
         },
         validationMail: {
             isActive: true,
             message: {
-                invalidMessage: 'Inserire una email valida',
-                validMessage: 'Email ok'
+                invalidMessage: 'Inserire una email valida (client)',
+                validMessage: 'Email ok (client)'
             }
         },
         validationPostalCode: {
             isActive: true,
             message: {
-                invalidMessage: 'Postal code non valido',
-                validMessage: 'Postal cod ok '
+                invalidMessage: 'Postal code non valido (client)',
+                validMessage: 'Postal cod ok (client)'
             }
         },
         validationTaxId: {
             isActive: true,
             message: {
-                invalidMessage: 'Tax ID non valido',
-                validMessage: 'Tax ID ok '
+                invalidMessage: 'Tax ID non valido (client)',
+                validMessage: 'Tax ID ok (client) '
             }
         },
         validationPhone: {
@@ -47,8 +47,8 @@ $(document).ready(function () {
             // normalizationNumber: anche se vengono inseriti valori non numerici o caratteri speciali la funzione li escluderà andando a controllare solo i numeri
             normalizationNumber: false,
             message: {
-                validMessage: 'Telefono valido ',
-                invalidMessage: 'Numero di telefono non valido'
+                validMessage: 'Telefono valido (client)',
+                invalidMessage: 'Numero di telefono non valido (client)'
             }
         },
 
