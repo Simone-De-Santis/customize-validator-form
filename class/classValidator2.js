@@ -32,14 +32,6 @@ export default function (params, testo) {
                 // ?
                 //! Se viene settato che tutti i campi devono essere required
                 if (param.isAllRequired.isActive) {
-
-                    // if (!$.trim(element.value)) {
-                    //     e.preventDefault();
-                    //     e.stopPropagation();
-                    //     isValid = false;
-                    // } else {
-                    //     isValid = true
-                    // }
                     isValid = !$.trim(element.value) ? false : true;
                     insertMessage(element, isValid, (isValid ? param.isAllRequired.message.validMessage : param.isAllRequired.message.invalidMessage))
                 }
@@ -48,9 +40,7 @@ export default function (params, testo) {
                 if (param.validationMail.isActive && element.getAttribute("data-validate-type") == 'email' && elVal) {
                     resultValidation = validationEmail(elVal)
                     isValid = resultValidation.isValid;
-                    messsageValidation = (resultValidation.message ? resultValidation.message : (isValid ? param.validationMail.message.validMessage : param.validationMail.message.invalidMessage));
-
-                    insertMessage(element, isValid, messsageValidation)
+                    insertMessage(element, isValid, (isValid ? param.validationMail.message.validMessage : param.validationMail.message.invalidMessage))
                 }
                 // ?
                 //! Postal code
@@ -64,14 +54,12 @@ export default function (params, testo) {
 
 
 
-                    // isValid = checkPostalCode(elVal, country);
-                    // insertMessage(element, isValid, param.validationPostalCode)
+
                 }
                 // ?
                 //! TaxId
                 if (param.validationTaxId.isActive && element.getAttribute("data-validate-type") == 'taxId' && elVal) {
-                    // isValid = checkTaxId(elVal, country);
-                    // insertMessage(element, isValid, param.validationTaxId)
+
                     resultValidation = checkTaxId(elVal, country)
                     isValid = resultValidation.isValid;
                     messsageValidation = (resultValidation.message ? resultValidation.message : (isValid ? param.validationTaxId.message.validMessage : param.validationTaxId.message.invalidMessage));
@@ -112,13 +100,11 @@ export default function (params, testo) {
 
 
     };
-    function myIsNumber(x) {
-        return /^-?\d+$/.test(x)
+    function myIsNumber(number) {
+        return /^-?\d+$/.test(number)
     }
 
-    function log(testo) {
-        console.log('aa')
-    }
+
     // assegniamo la classe is-invalid all campo che non ha passato la validazione
     function toggleClass(el, isValid) {
         $(el).removeClass('is-valid').removeClass('is-invalid').addClass(isValid ? 'is-valid' : 'is-invalid')
@@ -133,7 +119,6 @@ export default function (params, testo) {
     //# Metodi
 
     //^ sanitize number
-
     /**
      * @todo La funzione prende un valore e lo restituisce se è uguale a zero o se è un numero
      * @todo Funzione usata in concomitanza di un filter
@@ -172,7 +157,13 @@ export default function (params, testo) {
         let errorMessage;
         // variabile che in base al type andremo a settare per navigare nell'oggetto di validazione
         let objPathTypePrefix;
-        let numberArr = value.split('')
+        // dividiamo il value in un array per andare ad eseguire i vari controlli
+        let numberArr = value.split('');
+        // creiamo una variabile dove inseriremo i i prefissi se presenti
+        let internationalPrefixValue = [];
+        let checkPrefixInternationalUser;
+        let companyPrefixValue
+
 
         //#1 in base al type settimo una variabile per andare a fare il ciclo e il controllo 
         if (type == 'cellular') {
@@ -181,241 +172,59 @@ export default function (params, testo) {
             objPathTypePrefix = 'prefixRegionHomePhone';
         }
 
-
-        //! caso 1 
-        //* l'utente può inserire solo numeri (no prefisso no altri caratteri)
-        //? Non eseguiamo un controllo sul prefisso delle compagnie o il prefisso regionale
-        //? Non eseguiamo un controllo sul prefisso internazionale
-        //? valore non normalizzato
-        //# eseguiamo un controllo solo sul length 
-        //# eseguiamo un controllo inserito solo numeri
-        if (param.normalizationNumber === false && param.cutPrefixInternationalToResault === false && param.acceptNumberWithInternationalCode === false && param.validationPrefixCompanyPhoneOrRegion === false) {
-
-            // tramite regex controlliamo se tutto quello inserito è un numero
-            resultChecked = myIsNumber(numberArr.join(''));
-            errorMessage = resultChecked ? 'numero valido' : 'inserire solo numeri';
-            //^ controlliamo il length
-            if (resultChecked) {
-                resultChecked = numberArr.length >= objLocalizationPath[country][type].minLength && numberArr.length <= objLocalizationPath[country][type].maxLength ? true : false;
-                errorMessage = resultChecked ? 'numero valido' : `'lunghezza minima dei caratteri ${objLocalizationPath[country][type].minLength} massima ${objLocalizationPath[country][type].maxLength}'`;
+        // cicliamo sui prefissi internazionali e puschiamo nella variabile i primi numeri dell
+        objLocalizationPath[country].prefixInternational.map((items, index) => {
+            for (let i = 0; i < items.length; i++) {
+                internationalPrefixValue.push(numberArr[i])
             }
 
-        }
+            if (JSON.stringify(internationalPrefixValue.join("")) == JSON.stringify(items) && param.acceptNumberWithInternationalCode) {
+                // controlliamo se il prefisso internazionale inserito è corretto
+                checkPrefixInternationalUser = true
 
-
-        //! caso 2
-        //* l'utente può inserire solo numeri (no prefisso no altri caratteri)
-        //? Non eseguiamo un controllo sul prefisso delle compagnie o il prefisso regionale
-        //- Non eseguiamo un controllo sul prefisso internazionale
-        //? valore non normalizzato
-        //# eseguiamo un controllo sul prefisso internazionale (accettiamo il prefisso internazionale e i numeri successivi rispettano il caso 1 )
-        //# eseguiamo un controllo solo sul length 
-        //# eseguiamo un controllo inserito solo numeri
-        if (param.normalizationNumber === false && param.cutPrefixInternationalToResault === false && param.acceptNumberWithInternationalCode === true && param.validationPrefixCompanyPhoneOrRegion === false) {
-
-            let numberOriginal = [...numberArr];
-            let numberValidation = [...numberOriginal];
-
-            let checkPrefixInternationalUser = false;
-            // cicliamo sui prefissi internazionali e controlliamo se è stato inserito lo tagliamo e eseguiamo il controllo sul numero restante e restituiamo il numero completo o il numero senza prefisso 
-            let arrPrefix = [];
-            objLocalizationPath[country].prefixInternational.map((items, index) => {
-                for (let i = 0; i < items.length; i++) {
-                    arrPrefix.push(numberArr[i])
-                }
-
-                if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items) && param.acceptNumberWithInternationalCode) {
+                if (param.cutPrefixInternationalToResault) {
                     // eliminiamo il prefisso internazionale dal' array
-                    checkPrefixInternationalUser = true
-                    numberValidation.splice(0, items.length);
-                    console.log('number original1', numberOriginal)
-
+                    numberArr.splice(0, items.length);
                 }
-            });
-            console.log('number validation', numberValidation)
-            console.log('number original', numberOriginal)
-            console.log('number Arr', numberArr)
-
-
-
-            // tramite regex controlliamo se tutto quello inserito è un numero
-            resultChecked = myIsNumber(numberValidation.join(''));
-            errorMessage = resultChecked ? 'numero valido' : 'inserire solo numeri';
-
-            //^ controlliamo il length
-
-            if (resultChecked) {
-
-                resultChecked = numberValidation.length >= objLocalizationPath[country][type].minLength && numberValidation.length <= objLocalizationPath[country][type].maxLength ? true : false;
-                errorMessage = resultChecked ? 'numero valido' : `'lunghezza minima dei caratteri ${objLocalizationPath[country][type].minLength} massima ${objLocalizationPath[country][type].maxLength}'`;
             }
 
+        });
+
+
+
+
+
+
+
+
+
+        //^ tramite regex controlliamo se tutto quello inserito è un numero
+        resultChecked = myIsNumber(numberArr.join(''));
+        errorMessage = resultChecked ? param.validMessage : param.invalidMessage;
+
+
+        //^ controlliamo il length
+        if (resultChecked) {
+            resultChecked = isValidLengthNumber(numberArr, country, type)
+            errorMessage = resultChecked ? param.validMessage : param.errorLengthMessage;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // //#(2) cicliamo e tagliamo il prefisso internazionale se è inserito
-        // if (param.acceptNumberWithInternationalCode) {
-        //     let checkPrefixInternationalUser = false;
-        //     objLocalizationPath[country].prefixInternational.map((items, index) => {
-        //         //^ ciclando sul prefisso internazionale nell'oggetto di validazione andiamo a fare un check sul numero inserito dall'utente ed eventualmente andiamo a talgiare lo stessa quantità di numeri per farci tornare un numero pulito senza prefisso internazionale
-        //         let arrPrefix = [];
-        //         for (let i = 0; i < items.length; i++) {
-        //             arrPrefix.push(numberArr[i])
-        //         }
-        //         if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items) && param.acceptNumberWithInternationalCode) {
-        //             // eliminiamo il prefisso internazionale dal' array
-        //             if (param.cutPrefixInternationalToResault) {
-
-        //                 numberArr.splice(0, items.length);
-        //             }
-        //             checkPrefixInternationalUser = true
-        //         }
-        //     });
-        //     if (checkPrefixInternationalUser || myIsNumber(numberArr.join(''))) {
-        //         resultChecked = true;
-        //         errorMessage = 'numero inserito valido ';
-        //     } else {
-        //         resultChecked = false;
-        //         errorMessage = 'il numero con prefisso internazionale non è valido prova a toglierlo';
-        //     }
-        // } else if (/^-?\d+$/.test(numberArr.join(''))) {
-        //     console.log('ciao', myIsNumber(numberArr.join('')))
-        //     resultChecked = true
-        //     errorMessage = 'numero inserito valido e senza prefisso'
-        // } else {
-        //     resultChecked = false;
-        //     errorMessage = 'il numero inserito non è valido prova a togliere il prefisso internazionale ed inserire solo numeri'
-        // }
-
-        // if (param.normalizationNumber) {
-        //     //^ filtriamo l'arr per ripulirlo restituendoci numberArr con solo numeri
-        //     numberArr.filter((value) => filterNumberNotZero(value));
-        // }
-
-        // //^ check del prefisso di cellulare o del prefisso regionale per validare il numero
-        // if (param.validationPrefixCompanyPhoneOrRegion) {
-        //     console.log('validation prefix')
-        //     objLocalizationPath[country][type][objPathTypePrefix].forEach((items) => {
-        //         // creiamo un array con i campi con la quale andare a fare il confronto
-        //         let arrPrefix = [];
-        //         for (let i = 0; i < items.length; i++) {
-        //             arrPrefix.push(numberArr[i])
-        //         }
-        //         if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
-        //             resultChecked = true;
-        //         }
-        //     });
-        // }
-
-
-        // //^ check length finale se sono stai passati i precedenti controlli verifichiamo il length 
-        // if (resultChecked) {
-        //     resultChecked = numberArr.length >= objLocalizationPath[country][type].minLength && numberArr.length <= objLocalizationPath[country][type].maxLength ? true : false;
-        // }
 
         //! return
 
         return result = {
             isValid: resultChecked,
-            // message: (errorMessage ? errorMessage : resultChecked ? 'telefono approvato (validator)' : 'telefono non approvato  (validator)')
             message: errorMessage
 
         }
         // return isValid;
+
+
     }
-    // ######old######
-    // /**
-    //  * @todo funzione unica per il check dei prefissi per cellular e per home
-    //  * @param  {Array} arr array con tutti i valori inseriti nei campi cellular o homPhone
-    //  * @param  {string} country localizzazione passata dal costruttore (IT,EN,FR..ecc..) che utilizzeremo per navigare nell'oggetto di validazione e rilevare il campo da validare
-    //  * @param  {string} type stringa passata dal data attribute dell'elemento che useremo per navigare nell'oggetto di validazione
-    //  * @return {boolean} isValid valore di ritorno se l'array ha passato la validazione (TRUE||FALSE)
-    //  * 
-    //  * @author Enomis
-    //  * @version 1.0
-    // */
-    // function prefixCutCheckAll(arr, country, type) {
-    //     let numberArr = arr
 
-    //     // variabile che in base al type andremo a settare per navigare nell'oggetto di validazione
-    //     let objPathType;
-
-    //     let isValid = false;
-    //     //^ in base all type settimo una variabile per andare a fare il ciclo e il controllo 
-    //     if (type == 'cellular') {
-    //         objPathType = 'prefixCompanyCellular';
-    //     } else if (type == 'homePhone') {
-    //         objPathType = 'prefixRegionHomePhone';
-    //     }
-
-    //     //^  cicliamo e tagliamo il prefisso internazionale se è inserito
-    //     objLocalizationPath[country].prefixInternational.map((items, index) => {
-    //         //^ ciclando sul prefisso internazionale nell'oggetto di validazione andiamo a fare un check sul numero inserito dall'utente ed eventualmente andiamo a talgiare lo stessa quantità di numeri per farci tornare un numero pulito senza prefisso internazionale
-    //         let arrPrefix = [];
-    //         for (let i = 0; i < items.length; i++) {
-    //             arrPrefix.push(numberArr[i])
-    //         }
-    //         if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
-    //             numberArr.splice(0, items.length);
-    //         }
-    //     });
-    //     //^ filtriamo l'arr per ripulirlo restituendoci numberArr con solo numeri
-    //     numberArr = arr.filter((value) => this.filterNumberNotZero(value));
-
-
-    //     //^ check del prefisso di cellulare o del prefisso regionale per validare il numero
-    //     objLocalizationPath[country][type][objPathType].forEach((items) => {
-    //         let arrPrefix = [];
-    //         for (let i = 0; i < items.length; i++) {
-    //             arrPrefix.push(numberArr[i])
-    //         }
-    //         if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items)) {
-    //             isValid = true;
-    //         }
-    //     });
-
-
-    //     //^ check length numero senza prefisso spazzi e caratteri non numerici
-    //     if (isValid) {
-    //         isValid = numberArr.length >= objLocalizationPath[country][type].minLength && numberArr.length <= objLocalizationPath[country][type].maxLength ? true : false;
-    //     }
-
-    //     //! return
-    //     return isValid;
-    // }
-    // ######old######
-
-    // ! in use
     //^ validazione del length 'numero'
-    function isValidLength(numberValidation, country, type,) {
+    function isValidLengthNumber(numberValidation, country, type,) {
         return numberValidation.length >= objLocalizationPath[country][type].minLength && numberValidation.length <= objLocalizationPath[country][type].maxLength ? true : false;
     }
-    //^ sett messagio di errore
-    function setErrorMessage(resultChecked, texTrue, country, type) {
-        return resultChecked ? texTrue : `'lunghezza minima dei caratteri ${objLocalizationPath[country][type].minLength} massima ${objLocalizationPath[country][type].maxLength}'`
-    }
-
 
     //^ validazione email
     /**
@@ -488,26 +297,12 @@ export default function (params, testo) {
 
     }
 
-    // this.cLog(testo)
+
     this.init(params);
     return this;
 };
 
 
-
-
-// $(document).ready(function () {
-
-//     let param_1 = {
-//         john: "doe",
-//         foo: "bar"
-//     };
-
-//     var form_ship = new esempioClasse(
-//         param_1
-//     );
-
-// });
 
 
 

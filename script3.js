@@ -14,41 +14,42 @@ $(document).ready(function () {
         isAllRequired: {
             isActive: true,
             message: {
-                invalidMessage: 'Il campo non può essere vuoto (client)',
-                validMessage: 'Campo convalidato (client)'
+                validMessage: 'Campo convalidato (client)',
+                invalidMessage: 'Il campo non può essere vuoto (client)'
             }
         },
         validationMail: {
             isActive: true,
             message: {
-                invalidMessage: 'Inserire una email valida (client)',
-                validMessage: 'Email ok (client)'
+                validMessage: 'Email ok (client)',
+                invalidMessage: 'Inserire una email valida (client)'
             }
         },
         validationPostalCode: {
             isActive: true,
             message: {
-                invalidMessage: 'Postal code non valido (client)',
-                validMessage: 'Postal cod ok (client)'
+                validMessage: 'Postal cod ok (client)',
+                invalidMessage: 'Postal code non valido (client)'
             }
         },
         validationTaxId: {
             isActive: true,
             message: {
-                invalidMessage: 'Tax ID non valido (client)',
-                validMessage: 'Tax ID ok (client) '
+                validMessage: 'Tax ID ok (client) ',
+                invalidMessage: 'Tax ID non valido (client)'
             }
         },
         validationPhone: {
             isActive: true,
-            validationPrefixCompanyPhoneOrRegion: false,
-            acceptNumberWithInternationalCode: true,
-            cutPrefixInternationalToResault: false,
             // normalizationNumber: anche se vengono inseriti valori non numerici o caratteri speciali la funzione li escluderà andando a controllare solo i numeri
             normalizationNumber: false,
+            validationPrefixCompanyPhoneOrRegion: false,
+            acceptNumberWithInternationalCode: true,
+            cutPrefixInternationalToResault: true,
             message: {
                 validMessage: 'Telefono valido (client)',
-                invalidMessage: 'Numero di telefono non valido (client)'
+                invalidMessage: 'Numero di telefono non valido (client)',
+                errorLengthMessage: 'lunghezza minima dei caratteri x massima y (client) ',
             }
         },
 
