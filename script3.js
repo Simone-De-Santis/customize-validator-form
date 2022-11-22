@@ -46,10 +46,13 @@ $(document).ready(function () {
 
             // accettiamo che l'utente inserisca un prefisso internazionale nel numero 
             acceptNumberWithInternationalCode: true,
+
             // eliminiamo dal value il prefisso internazionale (se validato in precedenza) per tornare il numero senza  di esso 
-            cutPrefixInternationalToResault: false,
+            cutPrefixInternationalToResault: true,
+
             // validiamo il prefisso della compagnia telefonica o della regione 
-            validationPrefixCompanyPhoneOrRegion: false,
+            validationPrefixCompanyPhoneOrRegion: true,
+
             // validazione del length parametro preso nell'oggetto objLocalizationPath 
             validationLength: false,
 
