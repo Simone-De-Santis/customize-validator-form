@@ -47,8 +47,8 @@ $(document).ready(function () {
             // normalizationNumber: anche se vengono inseriti valori non numerici o caratteri speciali la funzione li escluderà andando a controllare solo i numeri
             normalizationNumber: false,
             message: {
-                invalidMessage: 'Numero di telefono non valido',
-                validMessage: 'Telefono valido '
+                validMessage: 'Telefono valido ',
+                invalidMessage: 'Numero di telefono non valido'
             }
         },
 

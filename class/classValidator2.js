@@ -1,5 +1,8 @@
+// oggetto js con le regex per i codici postali 
 import { postalCodeRegex } from './regex/postalCodeRegex.js';
+// oggetto js con i controlli regex sulle 'partite iva'
 import { taxIdRegex } from './regex/taxIdRegex.js';
+// oggetto js per dove avremo i parametri di validazione in base alla localizzazione 
 import { objLocalizationPath } from './path/localizationPath.js';
 
 
@@ -38,7 +41,7 @@ export default function (params, testo) {
                     //     isValid = true
                     // }
                     isValid = !$.trim(element.value) ? false : true;
-                    setMessage(element, isValid, (isValid ? param.isAllRequired.message.validMessage : param.isAllRequired.message.invalidMessage))
+                    insertMessage(element, isValid, (isValid ? param.isAllRequired.message.validMessage : param.isAllRequired.message.invalidMessage))
                 }
                 // ?
                 //!  Controllo email 
@@ -47,7 +50,7 @@ export default function (params, testo) {
                     isValid = resultValidation.isValid;
                     messsageValidation = (resultValidation.message ? resultValidation.message : (isValid ? param.validationMail.message.validMessage : param.validationMail.message.invalidMessage));
 
-                    setMessage(element, isValid, messsageValidation)
+                    insertMessage(element, isValid, messsageValidation)
                 }
                 // ?
                 //! Postal code
@@ -56,26 +59,25 @@ export default function (params, testo) {
                     isValid = resultValidation.isValid;
                     messsageValidation = (resultValidation.message ? resultValidation.message : (isValid ? param.validationPostalCode.message.validMessage : param.validationPostalCode.message.invalidMessage));
 
-                    setMessage(element, isValid, messsageValidation)
+                    insertMessage(element, isValid, messsageValidation)
 
 
 
 
                     // isValid = checkPostalCode(elVal, country);
-                    // setMessage(element, isValid, param.validationPostalCode)
+                    // insertMessage(element, isValid, param.validationPostalCode)
                 }
                 // ?
                 //! TaxId
                 if (param.validationTaxId.isActive && element.getAttribute("data-validate-type") == 'taxId' && elVal) {
                     // isValid = checkTaxId(elVal, country);
-                    // setMessage(element, isValid, param.validationTaxId)
+                    // insertMessage(element, isValid, param.validationTaxId)
                     resultValidation = checkTaxId(elVal, country)
                     isValid = resultValidation.isValid;
                     messsageValidation = (resultValidation.message ? resultValidation.message : (isValid ? param.validationTaxId.message.validMessage : param.validationTaxId.message.invalidMessage));
 
-                    setMessage(element, isValid, messsageValidation)
+                    insertMessage(element, isValid, messsageValidation)
                 }
-
                 //! Validazione numero di telefono
                 if (param.validationPhone.isActive && element.getAttribute("data-validate-type") == 'phone' && elVal) {
 
@@ -83,18 +85,16 @@ export default function (params, testo) {
                     isValid = resultValidation.isValid;
                     messsageValidation = (resultValidation.message ? resultValidation.message : (isValid ? param.validationPhone.message.validMessage : param.validationPhone.message.invalidMessage));
 
-                    setMessage(element, isValid, messsageValidation)
+                    insertMessage(element, isValid, messsageValidation)
 
 
                 }
-
-
-
-
+                //^ andiamo ad inserire o a togliere la classe css bootstrap isValid
                 toggleClass(element, isValid)
 
                 console.log('element', element)
             })
+
             console.log('event', e.target)
 
 
@@ -123,7 +123,8 @@ export default function (params, testo) {
     function toggleClass(el, isValid) {
         $(el).removeClass('is-valid').removeClass('is-invalid').addClass(isValid ? 'is-valid' : 'is-invalid')
     }
-    function setMessage(el, isValid, messageValidation) {
+    //^ inseriamo nel html il messaggio di errore o di success
+    function insertMessage(el, isValid, messageValidation) {
         // console.log('start', $(el).nextAll('.invalid-feedback'));
 
         isValid ? $(el).nextAll('.valid-feedback').html(`${messageValidation}`) : $(el).nextAll('.invalid-feedback').html(`${messageValidation}`)
@@ -180,6 +181,7 @@ export default function (params, testo) {
             objPathTypePrefix = 'prefixRegionHomePhone';
         }
 
+
         //! caso 1 
         //* l'utente può inserire solo numeri (no prefisso no altri caratteri)
         //? Non eseguiamo un controllo sul prefisso delle compagnie o il prefisso regionale
@@ -188,6 +190,7 @@ export default function (params, testo) {
         //# eseguiamo un controllo solo sul length 
         //# eseguiamo un controllo inserito solo numeri
         if (param.normalizationNumber === false && param.cutPrefixInternationalToResault === false && param.acceptNumberWithInternationalCode === false && param.validationPrefixCompanyPhoneOrRegion === false) {
+
             // tramite regex controlliamo se tutto quello inserito è un numero
             resultChecked = myIsNumber(numberArr.join(''));
             errorMessage = resultChecked ? 'numero valido' : 'inserire solo numeri';
@@ -198,6 +201,8 @@ export default function (params, testo) {
             }
 
         }
+
+
         //! caso 2
         //* l'utente può inserire solo numeri (no prefisso no altri caratteri)
         //? Non eseguiamo un controllo sul prefisso delle compagnie o il prefisso regionale
@@ -207,6 +212,7 @@ export default function (params, testo) {
         //# eseguiamo un controllo solo sul length 
         //# eseguiamo un controllo inserito solo numeri
         if (param.normalizationNumber === false && param.cutPrefixInternationalToResault === false && param.acceptNumberWithInternationalCode === true && param.validationPrefixCompanyPhoneOrRegion === false) {
+
             let numberOriginal = numberArr;
             let numberValidation = numberValidation.push(numberOriginal);
 
@@ -217,6 +223,7 @@ export default function (params, testo) {
                 for (let i = 0; i < items.length; i++) {
                     arrPrefix.push(numberArr[i])
                 }
+
                 if (JSON.stringify(arrPrefix.join("")) == JSON.stringify(items) && param.acceptNumberWithInternationalCode) {
                     // eliminiamo il prefisso internazionale dal' array
                     checkPrefixInternationalUser = true
@@ -233,8 +240,11 @@ export default function (params, testo) {
             // tramite regex controlliamo se tutto quello inserito è un numero
             resultChecked = myIsNumber(numberValidation.join(''));
             errorMessage = resultChecked ? 'numero valido' : 'inserire solo numeri';
+
             //^ controlliamo il length
+
             if (resultChecked) {
+
                 resultChecked = numberValidation.length >= objLocalizationPath[country][type].minLength && numberValidation.length <= objLocalizationPath[country][type].maxLength ? true : false;
                 errorMessage = resultChecked ? 'numero valido' : `'lunghezza minima dei caratteri ${objLocalizationPath[country][type].minLength} massima ${objLocalizationPath[country][type].maxLength}'`;
             }
@@ -394,6 +404,16 @@ export default function (params, testo) {
         return isValid;
     }
     // ######old######
+
+    // ! in use
+    //^ validazione del length 'numero'
+    function isValidLength(numberValidation, country, type,) {
+        return numberValidation.length >= objLocalizationPath[country][type].minLength && numberValidation.length <= objLocalizationPath[country][type].maxLength ? true : false;
+    }
+    //^ sett messagio di errore
+    function setErrorMessage(resultChecked, texTrue, country, type) {
+        return resultChecked ? texTrue : `'lunghezza minima dei caratteri ${objLocalizationPath[country][type].minLength} massima ${objLocalizationPath[country][type].maxLength}'`
+    }
 
 
     //^ validazione email
