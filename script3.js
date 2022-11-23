@@ -54,7 +54,7 @@ $(document).ready(function () {
             validationPrefixCompanyPhoneOrRegion: true,
 
             // validazione del length parametro preso nell'oggetto objLocalizationPath 
-            validationLength: false,
+            validationLength: true,
 
 
 
