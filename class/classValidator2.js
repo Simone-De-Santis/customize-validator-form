@@ -16,99 +16,104 @@ export default function (params) {
         $(param.selectorForm).submit(function (e) {
             e.preventDefault();
             e.stopPropagation();
+            let isValidForm;
             $.each(e.target, function (index, element) {
-                let isValid;
+                let isValid = true;
                 // Oggetto di ritorno dalla validazione 
                 let resultValidation;
                 // variabile per il settaggio dell country
                 const country = param.localization
                 const elVal = $.trim(element.value)
 
-                // ^ ----OK---
-                //! Se viene settato che tutti i campi devono essere required
-                if (param.isAllRequired.isActive) {
-                    isValid = !$.trim(element.value) ? false : true;
+                // eseguiamo la validazione solo sui campi con un data-validate-type settato
+                if (element.getAttribute("data-validate-type")) {
+                    // ^ ----OK---
+                    //! Se viene settato che tutti i campi devono essere required
+                    if (param.isAllRequired.isActive) {
+                        isValid = !$.trim(element.value) ? false : true;
+                        insertMessage(element, isValid, (isValid ? param.isAllRequired.message.validMessage : param.isAllRequired.message.invalidMessage))
+                    }
+                    // ^ ----OK---
+                    //!  Controllo email 
+                    if (param.validationMail.isActive && element.getAttribute("data-validate-type") == 'email' && elVal) {
 
-                    insertMessage(element, isValid, (isValid ? param.isAllRequired.message.validMessage : param.isAllRequired.message.invalidMessage))
+                        resultValidation = validationEmail(elVal, param)
 
-                }
-                // ^ ----OK---
-                //!  Controllo email 
-                if (param.validationMail.isActive && element.getAttribute("data-validate-type") == 'email' && elVal) {
-
-                    resultValidation = validationEmail(elVal, param)
-
-                    isValid = resultValidation.isValid;
-
-
-                    insertMessage(element, isValid, resultValidation.message)
-                }
-                // ^ ----OK---
-                //! Postal code
-                if (param.validationPostalCode.isActive && element.getAttribute("data-validate-type") == 'postalCode' && elVal) {
-
-                    resultValidation = checkPostalCode(elVal, country, param)
-
-                    isValid = resultValidation.isValid;
+                        isValid = resultValidation.isValid;
 
 
-                    insertMessage(element, isValid, resultValidation.message)
+                        insertMessage(element, isValid, resultValidation.message)
+                    }
+                    // ^ ----OK---
+                    //! Postal code
+                    if (param.validationPostalCode.isActive && element.getAttribute("data-validate-type") == 'postalCode' && elVal) {
 
-                }
-                // ^ ----OK---
-                //! TaxId
-                if (param.validationTaxId.isActive && element.getAttribute("data-validate-type") == 'taxId' && elVal) {
+                        resultValidation = checkPostalCode(elVal, country, param)
 
-                    resultValidation = checkTaxId(elVal, country, param)
-
-                    isValid = resultValidation.isValid;
-
-                    insertMessage(element, isValid, resultValidation.message)
-                }
-                // ^ ----OK---
-                //! Validazione numero di telefono
-                if (param.validationPhone.isActive && element.getAttribute("data-validate-type") == 'phone' && elVal) {
-
-                    resultValidation = validationPhonNumber(elVal, country, element.getAttribute("data-value-type"), param.validationPhone);
-
-                    isValid = resultValidation.isValid;
+                        isValid = resultValidation.isValid;
 
 
-                    //^ Sostituiamo il valore inserito dall'utente con il valore sistemato (trim spazzi ecc...)
-                    element.value = resultValidation.valueReturn
+                        insertMessage(element, isValid, resultValidation.message)
+
+                    }
+                    // ^ ----OK---
+                    //! TaxId
+                    if (param.validationTaxId.isActive && element.getAttribute("data-validate-type") == 'taxId' && elVal) {
+
+                        resultValidation = checkTaxId(elVal, country, param)
+
+                        isValid = resultValidation.isValid;
+
+                        insertMessage(element, isValid, resultValidation.message)
+                    }
+                    // ^ ----OK---
+                    //! Validazione numero di telefono
+                    if (param.validationPhone.isActive && element.getAttribute("data-validate-type") == 'phone' && elVal) {
+
+                        resultValidation = validationPhonNumber(elVal, country, element.getAttribute("data-value-type"), param.validationPhone);
+
+                        isValid = resultValidation.isValid;
+
+
+                        //^ Sostituiamo il valore inserito dall'utente con il valore sistemato (trim spazzi ecc...)
+                        element.value = resultValidation.valueReturn
 
 
 
-                    insertMessage(element, isValid, resultValidation.message)
+                        insertMessage(element, isValid, resultValidation.message)
 
+                    }
+                    toggleClass(element, isValid)
                 }
                 //^ andiamo ad inserire o a togliere la classe css bootstrap isValid
-                toggleClass(element, isValid)
 
-                // console.log('element', element)
+
+                // cambiamo il valore in false di isValidForm per andare a fare il submit in caso di true
+                if (isValid === false) {
+                    isValidForm = false;
+                    console.log('isValid', isValid);
+                    console.log('elemento falseeeeeeeeeeeeeeee', element.type)
+                }
+
             })
-
-            // console.log('event', e.target)
-
-
-
 
 
         })
         // console.log(param);
 
-        // todo: Add try catch statement
-        // Popolo la struttura dello shipment con i dati  ricevuti
+        // // todo: Add try catch statement
+        // // Popolo la struttura dello shipment con i dati  ricevuti
         // $.extend(params);
 
-        // this.funzione("test");
+        // // this.funzione("test");
 
+        console.log('this', this.x)
 
     };
 
-
-
-
+    function x() {
+        console.log('chiamata funzioneeeeeeeeeeeeeeeee')
+    }
     //# #### METODI DI VALIDAZIONE #####
 
     //^ validazione numero di telefono
@@ -265,9 +270,6 @@ export default function (params) {
 
 
     }
-
-
-
     //^ validazione email
     /**
      * @param  {string} email valore che ci arriva dal value facciamo mechare con la Regex 
@@ -344,7 +346,7 @@ export default function (params) {
     * 
     * @author Enomis
     * @version 1.0 *
-   */
+    */
     function regexIsNumber(number) {
         return /^-?\d+$/.test(number)
     }
@@ -383,6 +385,7 @@ export default function (params) {
             return
         }
     }
+
 
     this.init(params);
     return this;

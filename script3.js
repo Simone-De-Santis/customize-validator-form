@@ -1,4 +1,4 @@
-// import class da un file esterno
+//^ import class da un file esterno
 import Validator from '../class/classValidator2.js';
 
 // Utilizzo:
@@ -70,9 +70,10 @@ $(document).ready(function () {
 
     };
 
-    var form_ship = new Validator(
+    let form_ship = new Validator(
         paramForm
     );
+
 });
 
 
