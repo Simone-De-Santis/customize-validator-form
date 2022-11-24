@@ -390,7 +390,7 @@ export default function (params) {
 
 
     this.init(params);
-    1
+    return 'dadasd'
 };
 
 
