@@ -1,0 +1,253 @@
+﻿ISO	Country	Format	Single	Denomination	Regex
+AD	Andorra	AA999		Andorra	Código postal	^(?:AD)*(\d{3})$
+AE	United Arab Emirates	-		United Arab Emirates		
+AF	Afghanistan	9999		Afghanistan	Post code	^(\d{4})$
+AG	Antigua and Barbuda	99999		Antigua and Barbuda	Post code	^(\d{5})$
+AI	Anguilla	AI-9999	AI-2640	Anguilla	Post code	^(AI-2640)$
+AL	Albania	9999		Albania	Kodi postar	^(\d{4})$
+AM	Armenia	9999		Armenia	Postal index	^(\d{4})$
+AN	Netherlands Antilles	-		Netherlands Antilles		
+AO	Angola	-		Angola		
+AQ	Antarctica	9999	7151	Antarctica	Postcode	^(7151)$
+AR	Argentina	A9999AAA		Argentina	CPA	^([A-Z]\d{4}[A-Z]{3})|([A-Z]\d{4})$
+AS	American Samoa	99999		American Samoa	Zip Code (US)	^(\d{5})$
+AT	Austria	9999		Austria	PLZ	^(\d{4})$
+AU	Australia	9999		Australia	Postcode	^(\d{4})$
+AW	Aruba	9999 AW	0000 AW	Aruba	postcode (NL)	^(0000 AW)$
+AX	Åland Islands	99999		Åland Islands	Postcode	^(\d{5})$
+AZ	Azerbaijan	AA 9999		Azerbaijan	İndeks	^(AZ) (\d{4})$
+BA	Bosnia and Herzegovina	99999		Bosnia and Herzegovina	Poštanski broj	^(\d{5})$
+BB	Barbados	AA99999		Barbados	Postal code	^(?:BB)*(\d{5})$
+BD	Bangladesh	9999		Bangladesh	Post code	^(\d{4})$
+BE	Belgium	9999		Belgium	Code postal	^(\d{4})$
+BF	Burkina Faso	-		Burkina Faso		
+BG	Bulgaria	9999		Bulgaria	Пощенски код	^(\d{4})$
+BH	Bahrain	9999		Bahrain	Post code	^(\d{3}\d?)$
+BI	Burundi	-		Burundi		
+BJ	Benin	-		Benin		
+BL	Saint Barthélemy	99999		Saint Barthélemy	Code postal (FR)	^(\d{5})$
+BM	Bermuda	AA 99		Bermuda	Post codes	^([A-Z]{2} \d{2})$
+BN	Brunei Darussalam	AA9999		Brunei Darussalam	Kod	^([A-Z]{2}\d{4})$
+BO	Bolivia	-		Bolivia		
+BQ	Bonaire, Sint Eustatius and Saba	9999 AA	0000 BQ	Bonaire, Sint Eustatius and Saba	Postcode	^(0000 BQ)$^(\d{6})$
+BR	Brazil	99999-999		Brazil	CEP	^[0-9]{5}-[0-9]{3}$
+BS	Bahamas	-		Bahamas		
+BT	Bhutan	99999		Bhutan	Post code	^(\d{5})$
+BV	Bouvet Island	-		Bouvet Island		
+BW	Botswana	-		Botswana		
+BY	Belarus	999999		Belarus	Индекс	^(\d{6})$
+BZ	Belize	-		Belize		
+CA	Canada	A9A 9A9		Canada	Post code	^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] +?[0-9][A-Z][0-9]$
+CC	Cocos (Keeling) Islands	9999 AA	9799 W3	Cocos (Keeling) Islands	Post code	^(6799 W3)$
+CD	Congo DR	-		Congo DR		
+CF	Central African Republic	-		Central African Republic		
+CG	Congo (Brazzaville)	-		Congo (Brazzaville)		
+CH	Switzerland	9999		Switzerland	PLZ / Code postal	^(\d{4})$
+CI	Côte D'Ivoire	-		Côte D'Ivoire		
+CK	Cook Islands	-		Cook Islands		\A(\d{7,7})\Z
+CL	Chile	9999999		Chile	Código postal	^(\d{7})$
+CM	Cameroon	-		Cameroon		
+CN	China	999999		China	郵政編碼	^(\d{6})
+CO	Colombia	999999		Colombia	Código postal	^(\d{6})$
+CP	Clipperton Islands	99999	98799	Clipperton Islands	Code postal	^(98799)$
+CR	Costa Rica	99999		Costa Rica	Código postal	^(\d{5})$
+CU	Cuba	99999		Cuba	Código postal	^(?:CP)*(\d{5})$
+CV	Cape Verde	9999		Cape Verde	CIP	^(\d{4})$
+CW	Curaçao	9999 AA	0000 CW	Curaçao	Postcode (NL)	^(0000 CW)$
+CX	Christmas Island	9999	6978	Christmas Island	Postcode	^(6978)$
+CY	Cyprus	9999		Cyprus	Postcode	^(\d{4})$
+CZ	Czech Republic	999 99		Czech Republic	PSČ	^[0-9]{3} [0-9]{2}$
+DE	Germany	99999		Germany	PLZ	^(\d{5})$
+DJ	Djibouti	-		Djibouti		
+DK	Denmark	9999		Denmark	Postnumre	^(\d{4})$
+DM	Dominica	-		Dominica		
+DO	Dominican Republic	99999		Dominican Republic	Código postal	^(\d{5})$
+DZ	Algeria	99999		Algeria	Code postal	^(\d{5})$
+EC	Ecuador	999999		Ecuador	Código postal	^(\d{6})$
+EE	Estonia	99999		Estonia	Postiindeks	^(\d{5})$
+EG	Egypt	99999		Egypt	الرمز البريدي	^(\d{5})$
+EH	Sahrawi Arab (Western Sahara)	99999		Sahrawi Arab (Western Sahara)	Code postal (MA)	^(\d{5})$
+ER	Eritrea	-		Eritrea		
+ES	Spain	99999		Spain	Código postal	^(\d{5})$
+ET	Ethiopia	9999		Ethiopia	Postal code	^(\d{4})$
+FI	Finland	99999		Finland	Postinumero	^(?:FI)*(\d{5})$
+FJ	Fiji	-		Fiji		
+FK	Falkland Islands	AAAA 9AA	FIQQ 1ZZ	Falkland Islands	Postcode	^(FIQQ 1ZZ)$
+FM	Micronesia	99999		Micronesia	Zip code (US)	^(\d{5})$
+FO	Faroe Islands	999		Faroe Islands	Postnumre (DK)	^(?:FO)*(\d{3})$
+FR	France	99999		France	Code postal	^(\d{5})$
+GA	Gabon	-		Gabon		
+GB	United Kingdom	A?99 9AA		United Kingdom	Postcode	^(?:(?:[A-PR-UWYZ][0-9]{1,2}|[A-PR-UWYZ][A-HK-Y][0-9]{1,2}↵
+GD	Grenada	-		Grenada		
+GE	Georgia	9999		Georgia	Post code	^(\d{4})$
+GF	French Guiana	99999	97399	French Guiana	Code postal (FR)	^((973)\d{2})$
+GG	Guernsey	AA9 9AA	GY9 9AA	Guernsey	Postcode (UK)	((GY)([0-9][0-9A-HJKPS-UW]?|[A-HK-Y][0-9][0-9ABEHMNPRV-Y]?) [0-9][ABD-HJLNP-UW-Z]{2})
+GH	Ghana	-		Ghana		
+GI	Gibraltar	AA99 9AA	GX11 1AA	Gibraltar	Postcode (UK)	^(GX11 1AA)$
+GL	Greenland	9999		Greenland	Postnumre (DK)	^(\d{4})$
+GM	Gambia	-		Gambia		
+GN	Guinea	999		Guinea	Code postal	^(\d{3})$
+GP	Guadeloupe	99999		Guadeloupe	Code postal (FR)	^((971)[0-9][0-0])$
+GQ	Equatorial Guinea	-		Equatorial Guinea		
+GR	Greece	999 99		Greece	T.K.	^(\d{3}) \d{2}$
+GS	South Georgia and the South Sandwich Islands	AAAA 9AA	SIQQ 1ZZ	South Georgia and the South Sandwich Islands	Post code	^(SIQQ 1ZZ)$
+GT	Guatemala	99999		Guatemala	Código postal	^(\d{5})$
+GU	Guam	99999		Guam	Zip Code (US)	^((969)[1-3][0-2])$
+GW	Guinea-Bissau	9999		Guinea-Bissau	Código postal	^(\d{4})$
+GY	Guyana	-		Guyana		
+HK	Hong Kong	999999	999077	Hong Kong	郵政編碼	^(999077)$
+HM	Heard Island and McDonald Islands	9999	7151	Heard Island and McDonald Islands	Postcode	^(7151)$
+HN	Honduras	99999		Honduras	Código postal	^(\d{5})$
+HR	Croatia	99999		Croatia	Zip	^(?:HR)*(\d{5})$
+HT	Haiti	9999		Haiti	Code postal	^(?:HT)*(\d{4})$
+HU	Hungary	9999		Hungary	Irányítószám	^(\d{4})$
+ID	Indonesia	99999		Indonesia	Kodepos	^(\d{5})$
+IE	Ireland	-		Ireland		
+IL	Israel	9999999		Israel	Postal code	^(\d{7})$
+IM	Isle of Man	AA99 9AA	IM99 9AA	Isle of Man	Postcode (UK)	((IM)([0-9][0-9A-HJKPS-UW]?|[A-HK-Y][0-9][0-9ABEHMNPRV-Y]?) [0-9][ABD-HJLNP-UW-Z]{2})
+IN	India	999999		India	PIN code	^(\d{6})$
+IO	British Indian Ocean Territory	AA9A 1AA	BB9D ZZ1	British Indian Ocean Territory	Postcode	^(BB9D 1ZZ)$
+IQ	Iraq	99999		Iraq	Postal code	^(\d{5})$
+IR	Iran	99999		Iran	کد پستی	^\d{5}([\-]\d{5})?$
+IS	Iceland	999		Iceland	Póstnúmer	^(\d{3})$
+IT	Italy	99999		Italy	CAP	^(\d{5})$
+JE	Jersey	AA9 9AA	JE9 9AA	Jersey	Postcode (UK)	(JE)([0-9]\d{1})
+JM	Jamaica	AAAAA99		Jamaica	Postal code	^((JM)[A-Z]{3,3}\d{2,2})$
+JO	Jordan	99999		Jordan	Postal code	^(\d{5})$
+JP	Japan	999-9999		Japan	郵便番号	^(\d{3}-\d{4})$
+KE	Kenya	99999		Kenya	Postal code	^(\d{5})$
+KG	Kyrgyzstan	999999		Kyrgyzstan	Почтовый индекс	^(\d{6})$
+KH	Cambodia	99999		Cambodia	Postal code	^(\d{5})$
+KI	Kiribati	-		Kiribati		
+KM	Comoros	-		Comoros		
+KN	Saint Kitts and Nevis	-		Saint Kitts and Nevis		
+KP	North Korea	-		North Korea		
+KR	South Korea	99999		South Korea	우편번호	^(\d{5})$
+KW	Kuwait	99999		Kuwait	Postal code	^(\d{5})$
+KY	Cayman Islands	AA9-9999		Cayman Islands	Postcode (UK)	^[K][Y][0-9]{1}[-]([0-9]){4}$
+KZ	Kazakhstan	999999		Kazakhstan	Почтового индекса	^(\d{6})$
+LA	Laos	99999		Laos	Postal code	^(\d{5})$
+LB	Lebanon	9999		Lebanon	Code postal	^(\d{4}(\d{4})?)$
+LC	Saint Lucia	-		Saint Lucia		
+LI	Liechtenstein	9999		Liechtenstein	PLZ (CH)	^(\d{4})$
+LK	Sri Lanka	99999		Sri Lanka	Postcode	^(\d{5})$
+LR	Liberia	9999		Liberia	Postal code	^(\d{4})$
+LS	Lesotho	999		Lesotho	Postal code	^(\d{3})$
+LT	Lithuania	99999		Lithuania	Pašto kodas	^(?:LT)*(\d{5})$
+LU	Luxembourg	9999		Luxembourg	Code postal	^(\d{4})$
+LV	Latvia	AA-9999		Latvia	Pasta indekss	^[L]{1}[V]{1}[-]([0-9]){4}$
+LY	Libya	99999		Libya	Postal code	^(\d{5})$
+MA	Morocco	99999		Morocco	Code postal	^(\d{5})$
+MC	Monaco	99999		Monaco	Code postal (FR)	^(\d{5})$
+MD	Moldova	9999		Moldova	Coduri poştale	^(?:MD)*(\d{4})$
+ME	Montenegro	99999		Montenegro	Поштански код	^(\d{5})$
+MF	Saint Martin	99999		Saint Martin	Code postal (FR)	^(\d{5})$
+MG	Madagascar	999		Madagascar	Code postal	^(\d{3})$
+MH	Marshall Islands	99999		Marshall Islands	ZIP code (US)	^((969)[6-7][0-9])$
+MK	Macedonia	9999		Macedonia	Поштенски код	^(\d{4})$
+ML	Mali	-		Mali		
+MM	Myanmar	99999		Myanmar	Postal code	^(\d{5})$
+MN	Mongolia	99999		Mongolia	Zipcode	^(\d{5})$
+MO	Macau	999999	999078	Macau	$郵政編碼	^(999078)$
+MP	Northern Mariana Islands	99999		Northern Mariana Islands	Zip Code (US)	^(\d{5})$
+MQ	Martinique	99999		Martinique	Code postal (FR)	^(\d{5})$
+MR	Mauritania	-		Mauritania		
+MS	Montserrat	AAA9999		Montserrat	Post code	^(?:MSR)*(\d{4})$
+MT	Malta	AAA 9999		Malta	Kodiċi Postali	^[A-Z]{3} [0-9]{4}$
+MU	Mauritius	A9999		Mauritius	Post code	^([0-9A-Z]\d{4})$
+MV	Maldives	99999		Maldives	Post code	^(\d{5})$
+MW	Malawi	-		Malawi		
+MX	Mexico	99999		Mexico	Código postal	^(\d{5})$
+MY	Malaysia	99999		Malaysia	Postal code	^(\d{5})$
+MZ	Mozambique	9999		Mozambique	Código postal	^(\d{4})$
+NA	Namibia	-		Namibia		
+NC	New Caledonia	99999		New Caledonia	Code postal (FR)	^(\d{5})$
+NE	Niger	9999		Niger	Code postal	^(\d{4})$
+NF	Norfolk Island	9999	2899	Norfolk Island	Post code	^(2899)$
+NG	Nigeria	999999		Nigeria	Postal code	^(\d{6})$
+NI	Nicaragua	99999		Nicaragua	Código postal	^(\d{5})$
+NL	Netherlands	9999 AA		Netherlands	Postcode	[0-9]{4} [A-Z]{2}
+NO	Norway	9999		Norway	Postnummer	^(\d{4})$
+NP	Nepal	99999		Nepal	Postal code	^(\d{5})$
+NR	Nauru	-		Nauru		
+NU	Niue	-		Niue		
+NZ	New Zealand	9999		New Zealand	Postcode	^(\d{4})$
+OM	Oman	999		Oman	Postal code	^(\d{3})$
+PA	Panama	-		Panama		
+PE	Peru	99999		Peru	Código postal	^(\d{5})$
+PF	French Polynesia	99999	98799	French Polynesia	Code postal (FR)	^((987)\d{2})$
+PG	Papua New Guinea	999		Papua New Guinea	Postal code	^(\d{3})$
+PH	Philippines	9999		Philippines	Zipcode	^(\d{4})$
+PK	Pakistan	99999		Pakistan	Post code	^(\d{5})$
+PL	Poland	99-999		Poland	Kod pocztowy	^[0-9]{2}[-]([0-9]){3}$
+PM	Saint Pierre and Miquelon	99999		Saint Pierre and Miquelon	Code postal (FR)	^(\d{5})$
+PN	Pitcairn Islands	AAA9 1AA	PCR9 1ZZ	Pitcairn Islands	Post code	^(PCR9 1ZZ)$
+PR	Puerto Rico	99999		Puerto Rico	ZIP code (US)	^\d{5}((-|\s)?\d{4})?$
+PS	Palestina	A9990000		Palestina	Post code	^([P]\d{3}(\d{4})?)$
+PT	Portugal	9999-999		Portugal	Código postal	^\d{4}((-|\s)?\d{3})?$
+PW	Palau	99999	96940	Palau	Postal code	^(96940)$
+PY	Paraguay	9999		Paraguay	Código postal	^(\d{4})$
+QA	Qatar	-		Qatar		
+RE	Réunion	99999		Réunion	Code postal (FR)	[9]{1}[7|8][4|7|8]\d{2}
+RO	Romania	999999		Romania	Cod poştal	^(\d{6})$
+RS	Serbia	99999		Serbia	Поштански код	^(\d{5})$
+RU	Russia	999999		Russia	Почтовый индекс	^(\d{6})$
+RW	Rwanda	-		Rwanda		
+SA	Saudi Arabia	99999-9999		Saudi Arabia	Postal code	^\d{5}([\-]\d{4})?$
+SB	Solomon Islands	-		Solomon Islands		
+SC	Seychelles	-		Seychelles		
+SD	Sudan	99999		Sudan	Postal code	^(\d{5})$
+SE	Sweden	999 99		Sweden	Postnummer	^(\d{3} \d{2})$
+SG	Singapore	999999		Singapore	Postal code	^(\d{6})$
+SH	Saint Helena, Ascension and Tristan Da Cunha	AAAA 1AA	ASCN 1ZZ	Saint Helena, Ascension and Tristan Da Cunha	Postcode (UK)	^(ASCN 1ZZ)$
+SI	Slovenia	9999		Slovenia	Poštna številka	^(\d{4})$
+SJ	Svalbard and Jan Mayen	9999		Svalbard and Jan Mayen	Postnummer (NO)	^(\d{4})$
+SK	Slovakia	999 99		Slovakia	PSČ	^(\d{3} \d{2})$
+SL	Sierra Leone	-		Sierra Leone		
+SM	San Marino	99999		San Marino	CAP (IT)	^(4789\d)$
+SN	Senegal	99999		Senegal	Code postal	^(\d{5})$
+SO	Somalia	-		Somalia		
+SR	Suriname	-		Suriname		
+SS	South Sudan	99999		South Sudan	Postal code	^(\d{5})$
+ST	São Tomé and Príncipe	-		São Tomé and Príncipe		
+SV	El Salvador	9999		El Salvador	Código postal	^(1101)$
+SX	Sint Maarten	9999 AA	0000 AA	Sint Maarten	Post code	^(0000 AA)$
+SY	Syria	-		Syria		
+SZ	Swaziland	A999		Swaziland	Postal code	^([A-Z]\d{3})$
+TC	Turks and Caicos	AAAA 1AA	TKCA 1ZZ	Turks and Caicos	Postcode (UK)	^(TKCA 1ZZ)$
+TD	Chad	99999		Chad	Postal code	^(\d{5})$
+TF	French Southern Territories	99999		French Southern Territories	Code postal	^((984)\d{2})$
+TG	Togo	-		Togo		
+TH	Thailand	99999		Thailand	รหัสไปรษณีย์	^(\d{5})$
+TJ	Tajikistan	999		Tajikistan	Нишонаи почта	^(\d{3})$
+TK	Tokelau	-		Tokelau		
+TL	East Timor	-		East Timor	PCode	
+TM	Turkmenistan	999999		Turkmenistan	Почтовый индекс	^(\d{6})$
+TN	Tunisia	9999		Tunisia	Code postal	^(\d{4})$
+TO	Tonga	-		Tonga		
+TR	Turkey	99999		Turkey	Posta kodu	^(\d{5})$
+TT	Trinidad and Tobago	-		Trinidad and Tobago		
+TV	Tuvalu	-		Tuvalu		
+TW	Taiwan	99999		Taiwan	郵遞區號	^(\d{3}\d{2})|(\d{3})$
+TZ	Tanzania	99999		Tanzania	Postal code	^(\d{5})$
+UA	Ukraine	99999		Ukraine	Поштовий індекс	^(\d{5})$
+UG	Uganda	-		Uganda		
+UM	United States Minor Outlying Islands	96898		United States Minor Outlying Islands		^(96898)$
+US	United States	99999-9999		United States	ZIP code	^[0-9]{5}(?:-[0-9]{4})?$
+UY	Uruguay	99999		Uruguay	Código postal	^(\d{5})$
+UZ	Uzbekistan	999999		Uzbekistan	Почтовый индекс	^(\d{6})$
+VA	Vatican City	999	120	Vatican City	CAP (IT)	(120)
+VC	Saint Vincent and the Grenadines	AA9999		Saint Vincent and the Grenadines	Postal code	(VC)(\d{4})
+VE	Venezuela	9999		Venezuela	Código postal	^(\d{4})$
+VG	British Virgin Islands	AA9999		British Virgin Islands	Postal code	^(VG11)[0-6][0]$
+VI	US Virgin Islands	99999		US Virgin Islands	Zip Code (US)	^(\d{5})$
+VN	Viet Nam	999999		Viet Nam	Mã bưu chính	^(\d{6})$
+VU	Vanuatu	-		Vanuatu		
+WF	Wallis and Futuna	99999		Wallis and Futuna	Code postal (FR)	
+WS	Samoa	99999		Samoa	Postal code	
+XK	Kosovo	99999		Kosovo	Поштански код	
+YE	Yemen	-		Yemen		
+YT	Mayotte	99999		Mayotte	Code postal (FR)	^(\d{5})$
+ZA	South Africa	9999		South Africa	Postal code	^(\d{4})$
+ZM	Zambia	99999		Zambia	Postal code	^(\d{5})$
+ZW	Zimbabwe	-		Zimbabwe		

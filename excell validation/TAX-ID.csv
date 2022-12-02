@@ -1,0 +1,69 @@
+﻿ISO	name	format	length	regex	abrevName	localName
+AL	Albania	XXXXXXXXXX	10	^[J|K][0-9]{8}{L]$	NIPT	Numri i Identifikimit për Personin e Tatueshëm
+AR	Argentina	99999999999	11	^[0-9]{11}$	CUIT	Código Único de Identificación Tributaria
+AU	Australia	99999999999	11	^[0-9]{11}$	ABN	Australian Business Number
+AT	Austria	ATU99999999	11	^ATU[0-9]{8}$	UID	Umsatzsteuer-Identifikationsnummer
+BY	Belarus	9999999999	9	^[0-9]{9}$	УНП (UNP)	Учетный номер плательщика
+BE	Belgium	BE0999999999	12	^BE0[0-9]{9}$	TVA	BTW nummer
+BO	Bolivia	9999999	7	^[0-9]{7}$	NIT	Número de Identificación Tributaria
+BR	Brazil	99999999	8	^[0-9]{8}$	CNPJ/CPF	Cadastro Nacional de Pessoa Jurídica
+BG	Bulgaria	BG9999999999	09-10	^BG[0-9]{9,10}$	ДДС(номер)	Identifikacionen nomer po DDS
+CA	Canada	XXXXXXXXX	9	^[0-9A-Z]{8,9}$	BN/NE	Business Number Numéro d'entreprise
+CL	Chile	99999999	8	^[0-9]{8}$	RUT	Rol Único Tributario
+CN	China	999999999999999999	18	^[0-9]{18}$	TIN	统一社会信用代码
+CO	Colombia	999999999	9	^[0-9]{9}$	NIT	Número De Identificación
+CR	Costa Rica	999999999999	12	^[0-9]{10,12}$	CJ	Cédula Jurídica
+HR	Croatia	HR99999999999	13	^HR\d{11}$	PDV/OIB	PDV Id. Broj OIB
+CY	Cyprus	CY99999999L	11	^CY[0-9]{8,9}L$	ΦΠΑ	Arithmós Engraphes phi. pi. a.
+CZ	Czech Republic	CZ9999999999	10-12	^CZ[0-9]{8,10}$	DIČ	Danové identifikacní císlo
+DK	Denmark	DK99999999	10	^DK[0-9]{8}$	CVR	Momsregistreringsnummer
+DO	Domninican Republic	999999999	9	^[0-9]{9}$	RNC	Registro Nacional del Contribuyente
+EC	Ecuador	9999999999999	13	^[0-9]{13}$	RUC	Número de Registro Unico de Contribuyentes
+SV	El Salvador	999999999999999	14	^[0-9]{14}$	NIT	Número de Identificación Tributaria
+EE	Estonia	EE999999999	11	^EE[0-9]{9}$	KMKR	Käibemaksukohustuslase number
+FI	Finland	FI99999999	11	^FI[0-9]{8}$	ALV	Arvonlisäveronumero
+FR	France	FR99999999999	13	^FR[0-9A-Z]{2}[0-9]{9}$	TVA	Numéro de TVA
+DE	Germany	DE999999999	11	^DE[0-9]{9}$	UST	Umsatzsteuer-Identifikationsnummer
+GR	Greece	GR999999999	11	^(EL|GR)[0-9]{9}$	ΑΦΜ	Arithmós Phorologikoú Metroou
+GT	Guatemala	999999999	9	^[0-9]{9}$	NIT	Número de Identificación Tributaria
+HN	Honduras	99999999999999	14	^[0-9]{14}$	RTN	Registro Tributario Nacional
+HK	Hong Kong	99999999	8	^[0-9]{8}$	BRN	统一社会信用代码
+HU	Hungary	HU99999999	10	^HU[0-9]{8}$	ANUM	Közösségi adószám
+IS	Iceland	999999	6	^[0-9][A-Z]{6}$	VSK/VASK	Virðisaukaskattsnúmer
+ID	Iddonesia	999999999999999	15	^[0-9]{15}$	NPWP	Nomor Pokok Wajib Pajak
+IN	India	9999999999X	11	^[0-9]{10}{V|C]{1}$	IVA	Value Added Tax
+IE	Ireland	IE9S99999L	10	^IE[0-9]S[0-9]{5}L$	VAT	Value added tax identification no
+IL	Israel	9999999999	9	^[0-9]{9}$	עוסק	מס ' עוסק מורשה פ"ח 
+IT	Italy	IT99999999999	13	^IT[0-9]{11}$	IVA	Partita IVA
+JP	Japan	9999999999999	13	^[0-9]{12,13}$	Hōjin	Hōjin bangō (法人番号)
+LV	Latvia	LV99999999999	13	^LV[0-9]{11}$	PVN	PVN registracijas numurs
+LT	Lithuania	LT999999999999	11-14	^LT([0-9]{9}|[0-9]{12})$	PVM	Pridetines vertes mokestis moketojo kodas
+LU	Luxembourg	LU99999999	10	^(LU)?[0-9]{8}$	TVA	Numéro de TVA
+MT	Malta	99999999	8	^MT[0-9]{8}$	VAT	Vat reg. no.
+MX	Mexico	XXXX999999XXX	12-13	^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[A-Z|\d]{3})$	RFC	Registro Federal de Contribuyentes
+NL	Netherlands	NL999999999B99	14	^NL[0-9]{9}B[0-9]{2}$	BTW	BTW nummer
+NZ	New Zealand	9999999999999	13	^[0-9]{13}$	NZBN	NZ Business Number
+NI	Nicaragua	9999999999999X	14	^([0-9]{13}([A-Z]{1})$	RUC		Registro Unico de Contribuyentes
+NO	Noway	MVA999999999	12	^MVA[0-9]{9}$	ORGNR	Organisasjonsnummer
+PA	Panama	99999999999999	14	^[0-9]{14}$	RUC	Registro Único de Contribuyente
+PY	Pataguay	6666666	7	^[0-9]{7}$	RUC	Registro Unico de Contribuyentes
+PE	Peru	99999999999	11	^[0-9]{11}$	RUC	Registro Unico de Contribuyentes
+PH	Philipines	999999999999	12	^[0-9]{12}$	TIN	Tax Identification Number
+PL	Poland	PL9999999999	12	^PL[0-9]{10}$	NIP	Numer Identyfikacji Podatkowej
+PT	Portugal	PT999999999	11	^PT[0-9]{9}$	NIF/NIPC	Número de Identificação Fiscal
+RO	Romania	RO999999999999	2-14	^(RO)?[0-9]{2,10}$	CIF	Cod de înregistrare în scopuri de TVA
+RU	Rusia	999999999999	12	^[0-9]{10,12}$	ИНН	Идентификационный номер налогоплательщика
+SM	San Marino	99999	5	^[0-9]{5}$	COE	Codice operatore economico
+RS	Serbia	999999999	9	^[0-9]{9}$	PIB	Poreski identifikacioni broj
+SK	Slovakia	SK9999999999	12	^SK[0-9]{10}$	IČ DPH	Identifikacné císlo pre dan z pridanej hodnoty
+SI	Slovenia	SI99999999	10	^SI[0-9]{8}$	DDV	Davcna številka
+ES	Spain	ESX9999999X	11	^ES[0-9A-Z][0-9]{7}[0-9A-Z]$	NIF/CIF	Número de Identificación Fiscal
+SE	Sweden	SE999999999999	14	^SE[0-9]{12}$	VAT	VAT-nummer or momsnummer
+CH	Switzerland	999999	06-09	^CHE[0-9]{6,9}$	TVA/IVA	Mehrwertsteuernummer
+TR	Turkey	9999999999	10	^[0-9]{10}$	VKN	Vergi Kimlik Numarası
+UA	Ucraine	9999999999	10	^[0-9]{10}$	ІНПП	Ідентифікаційний номер платника податків
+GB	United Kingdom	GB9999999999	5-12	^GB([0-9]{9}([0-9]{3})?|[A-Z]{2}[0-9]{3})$	VAT	Value Added Tax registration number
+UY	Uruguay	999999999999	12	^[0-9]{12}$	RUT	Registro Único Tributario
+US	USA	99-9999999	10	^\d{2}-\d{7}$	EIN	Employer Identification Number
+UZ	Uzbekistan	99999999?99999999?	18	^[2|4][0000000}[X][2|4][0-9]{7)[X]$	СТИР	Солиқ тўловчиларнинг идентификация рақами
+VE	Venezuela	X99999999	9	^[J|K|V|E]{9}$	RIF	Registro de Informacion Fiscal

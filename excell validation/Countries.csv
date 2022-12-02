@@ -1,0 +1,253 @@
+﻿ISO	Country	Sovereign	Capital	Language	LanguagePC	Currency
+AF	Afghanistan	AF	Kabul	FA        	EN	AFN
+AX	Åland Islands	FI	Mariehamn	SV        	FI,SV	EUR
+AL	Albania	AL	Tirana	SQ        	SQ	ALL
+DZ	Algeria	DZ	Algiers	AR        	FR	DZD
+AS	American Samoa	US	Pago Pago	EN        	EN	USD
+AD	Andorra	AD	Andorra la Vella	CA        	CA	EUR
+AO	Angola	AO	Luanda	PT        	PT	AOA
+AI	Anguilla	GB	The Valley	EN        	EN	XCD
+AQ	Antarctica	AU		EN        	EN	AUD
+AG	Antigua and Barbuda	AG	Saint John's	EN        	EN	XCD
+AR	Argentina	AR	Buenos Aires	ES        	ES	ARS
+AM	Armenia	AM	Yerevan	HY        	EN,HY	AMD
+AW	Aruba	NL	Oranjestad	NL        	NL	AWG
+AU	Australia	AU	Canberra	EN        	EN	AUD
+AT	Austria	AT	Vienna	DE        	DE	EUR
+AZ	Azerbaijan	AZ	Baku	AZ        	EN,AZ	AZN
+BS	Bahamas	BS	Nassau	EN        	EN	BSD
+BH	Bahrain	BH	Manama	AR        	EN	BHD
+BD	Bangladesh	BD	Dhaka	BN        	EN	BDT
+BB	Barbados	BB	Bridgetown	EN        	EN	BBD
+BY	Belarus	BY	Minsk	BE        	EN,RU	BYR
+BE	Belgium	BE	Brussels	FR        	FR,NL	EUR
+BZ	Belize	BZ	Belmopan	EN        	EN	BZD
+BJ	Benin	BJ	Porto-Novo	FR        	FR	XOF
+BM	Bermuda	GB	Hamilton	EN        	EN	BMD
+BT	Bhutan	BT	Thimphu	DZ        	EN	BTN
+BO	Bolivia	BO	Sucre	ES        	ES	BOB
+BQ	Bonaire, Sint Eustatius and Saba	NL	Kralendijk	NL        	NL	USD
+BA	Bosnia and Herzegovina	BA	Sarajevo	BS        	BS	BAM
+BW	Botswana	BW	Gaborone	EN        	EN	BWP
+BV	Bouvet Island	NO	Bouvet Island	NO        	EN,NO	NOK
+BR	Brazil	BR	Brasília	PT        	PT	BRL
+IO	British Indian Ocean Territory	GB	British Indian Ocean Territory	EN        	EN	USD
+VG	British Virgin Islands	GB	Road Town	EN        	EN	USD
+BN	Brunei Darussalam	BN	Bandar Seri Begawan	MS        	EN	BND
+BG	Bulgaria	BG	Sofia	BG        	EN,BG	EUR
+BF	Burkina Faso	BF	Ouagadougou	FR        	FR	XOF
+BI	Burundi	BI	Bujumbura	FR        	FR	BIF
+KH	Cambodia	KH	Phnom Penh	KM        	EN	KHR
+CM	Cameroon	CM	Yaoundé	FR        	FR	XAF
+CA	Canada	CA	Ottawa	EN        	EN	CAD
+CV	Cape Verde	CV	Praia	PT        	PT	CVE
+KY	Cayman Islands	GB	George Town	EN        	EN	KYD
+CF	Central African Republic	CF	Bangui	FR        	FR	XAF
+TD	Chad	TD	N'Djamena	FR        	FR	XAF
+CL	Chile	CL	Santiago	ES        	ES	CLP
+CN	China	CN	Běijīng (Pekín)	ZH        	EN,ZH	CNY
+CX	Christmas Island	AU	Christmas Island	EN        	EN	AUD
+CP	Clipperton Island	FR		FR        	FR	EUR
+CC	Cocos (Keeling) Islands	AU	Cocos (Keeling) Islands	MS        	EN,MS	AUD
+CO	Colombia	CO	Bogotá	ES        	ES	COP
+KM	Comoros	KM	Moroni	AR        	EN	KMF
+CD	Congo DR	CD	Kinshasa	FR        	FR	CDF
+CG	Congo-Brazzaville	CG	Kinshasa	FR        	FR	XAF
+CK	Cook Islands	NZ	Avarua	EN        	EN	NZD
+CR	Costa Rica	CR	San José	ES        	ES	CRC
+CI	Côte D'Ivoire	CI	Yamoussoukro	FR        	FR	XOF
+HR	Croatia	HR	Zagreb	HR        	HR	HRK
+CU	Cuba	CU	Havana	ES        	ES	CUP
+CW	Curaçao	NL	Willemstad	NL        	NL	ANG
+CY	Cyprus	CY	Nicosia/Lefkosia/Λευκωσία	EL        	EN,EL	EUR
+CZ	Czechia	CZ	Prague	CS        	CS	EUR
+DK	Denmark	DK	Copenhagen	DA        	DA	EUR
+DJ	Djibouti	DJ	Djibouti	FR        	FR	DJF
+DM	Dominica	DM	Roseau	EN        	EN	XCD
+DO	Dominican Republic	DO	Santo Domingo	ES        	ES	DOP
+TL	East Timor	TL	Dili	TE        	EN	USD
+EC	Ecuador	EC	Quito	ES        	ES	USD
+EG	Egypt	EG	Cairo	AR        	EN	EGP
+SV	El Salvador	SV	San Salvador	ES        	ES	USD
+GQ	Equatorial Guinea	GQ	Malabo	ES        	ES	XAF
+ER	Eritrea	ER	Asmara	AA        	EN	ERN
+EE	Estonia	EE	Tallinn	ET        	ET	EEK
+ET	Ethiopia	ET	Addis Ababa	AM        	EN	ETB
+FK	Falkland Islands	GB	Stanley	EN        	EN	FKP
+FO	Faroe Islands	DK	Tórshavn	FO        	FO	DKK
+FJ	Fiji	FJ	Suva	EN        	EN	FJD
+FI	Finland	FI	Helsinki	FI        	FI,SV	EUR
+FR	France	FR	París	FR        	FR	EUR
+GF	French Guiana	FR	Cayenne	FR        	FR	EUR
+PF	French Polynesia	FR	Papeete	FR        	FR	XPF
+TF	French Southern Territories	FR	French Southern Territories	FR        	FR	EUR
+GA	Gabon	GA	Libreville	FR        	FR	XAF
+GM	Gambia	GM	Banjul	EN        	EN	GMD
+GE	Georgia	GE	Tbilisi	KA        	EN	GEL
+DE	Germany	DE	Berlin	DE        	DE	EUR
+GH	Ghana	GH	Accra	EN        	EN	GHS
+GI	Gibraltar	GB	Gibraltar	EN        	EN	GIP
+GR	Greece	GR	Athens	EL        	EN,EL	EUR
+GL	Greenland	DK	Nuuk	KL        	DA	DKK
+GD	Grenada	GD	Saint George's	EN        	EN	XCD
+GP	Guadeloupe	FR	Basse-Terre	FR        	FR	EUR
+GU	Guam	US	Hagåtña	EN        	EN	USD
+GT	Guatemala	GT	Ciudad de Guatemala	ES        	ES	GTQ
+GG	Guernsey	GB	St Peter Port	EN        	EN	GBP
+GN	Guinea	GN	Conakry	FR        	FR	GNF
+GW	Guinea-Bissau	GW	Bissau	PT        	PT	XOF
+GY	Guyana	GY	Georgetown	EN        	EN	GYD
+HT	Haiti	HT	Port-au-Prince	HT        	FR	HTG
+HM	Heard Island and McDonald Islands	AU	Heard Island and McDonald Islands	EN        	EN	AUD
+HN	Honduras	HN	Tegucigalpa	ES        	ES	HNL
+HK	Hong Kong	CN	Hong Kong	ZH        	EN	HKD
+HU	Hungary	HU	Budapest	HU        	HU	EUR
+IS	Iceland	IS	Reykjavík	IS        	IS	ISK
+IN	India	IN	New Delhi	TA        	EN	INR
+ID	Indonesia	ID	Jakarta	ID        	EN	IDR
+IR	Iran	IR	Tehran	FA        	EN	IRR
+IQ	Iraq	IQ	Baghdad	AR        	EN,AR	IQD
+IE	Ireland	IE	Dublin	EN        	EN,GA	EUR
+IM	Isle of Man	GB	Douglas, Isle of Man	EN        	EN	GBP
+IL	Israel	IL	Jerusalem	HE        	EN,HE	ILS
+IT	Italy	IT	Rome	IT        	IT	EUR
+JM	Jamaica	JM	Kingston	EN        	EN	JMD
+JP	Japan	JP	Tokyo	JA        	EN,JA,AI	JPY
+JE	Jersey	GB	Saint Helier	EN        	EN	GBP
+JO	Jordan	JO	Amman	AR        	EN	JOD
+KZ	Kazakhstan	KZ	Astana	KK        	EN,RU	KZT
+KE	Kenya	KE	Nairobi	SW        	EN	KES
+KI	Kiribati	KI	South Tarawa	EN        	EN	AUD
+XK	Kosovo	XK	Priština	SR        	EN,SQ,SR	EUR
+KW	Kuwait	KW	Kuwait City	AR        	EN,AR	KWD
+KG	Kyrgyzstan	KG	Bishkek	KY        	EN,RU	KGS
+LA	Laos	LA	Vientiane	LO        	EN	LAK
+LV	Latvia	LV	Riga	LV        	LV	EUR
+LB	Lebanon	LB	Beirut	AR        	EN,AR	LBP
+LS	Lesotho	LS	Maseru	EN        	EN	LSL
+LR	Liberia	LR	Monrovia	EN        	EN	LRD
+LY	Libya	LY	Tripoli	AR        	EN	LYD
+LI	Liechtenstein	LI	Vaduz	DE        	DE	CHF
+LT	Lithuania	LT	Vilnius	LT        	LT	LTL
+LU	Luxembourg	LU	Luxembourg	FR        	FR	EUR
+MO	Macau	CN	Macau	ZH        	EN	MOP
+MK	Macedonia	MK	Skopje	MK        	EN,MK	MKD
+MG	Madagascar	MG	Antananarivo	FR        	FR	MGA
+MW	Malawi	MW	Lilongwe	NY        	EN	MWK
+MY	Malaysia	MY	Kuala Lumpur	MS        	EN	MYR
+MV	Maldives	MV	Malé	DI        	EN	MVR
+ML	Mali	ML	Bamako	FR        	FR	XOF
+MT	Malta	MT	Valletta	MT        	EN,MT	EUR
+MH	Marshall Islands	US	Majuro	MH        	EN,MH	USD
+MQ	Martinique	FR	Fort-de-France	FR        	FR	EUR
+MR	Mauritania	MR	Nouakchott	AR        	EN	MRO
+MU	Mauritius	MU	Port Louis	EN        	EN	MUR
+YT	Mayotte	FR	Mamoudzou	FR        	FR	EUR
+MX	Mexico	MX	Mexico City	ES        	ES	MXN
+FM	Micronesia	US	Palikir	EN        	EN	USD
+MD	Moldova	MD	Chişinău	RO        	RO	MDL
+MC	Monaco	MC	Monaco	FR        	FR	EUR
+MN	Mongolia	MN	Ulaanbaatar	MN        	EN,MN	MNT
+ME	Montenegro	ME	Podgorica	SR        	EN	EUR
+MS	Montserrat	GB	Plymouth	EN        	EN	XCD
+MA	Morocco	MA	Rabat	AR        	FR	MAD
+MZ	Mozambique	MZ	Maputo	PT        	PT	MZN
+MM	Myanmar (Burma)	MM	Naypyidaw	MY        	EN	MMK
+NA	Namibia	NA	Windhoek	EN        	EN	NAD
+NR	Nauru	NR	Yaren	NA        	EN	AUD
+NP	Nepal	NP	Kathmandu	NE        	EN	NPR
+NL	Netherlands	NL	Amsterdam	NL        	NL	EUR
+AN	Netherlands Antilles	NL	Willemstad	NL        	NL	ANG
+NC	New Caledonia	FR	Nouméa	FR        	FR	XPF
+NZ	New Zealand	NZ	Wellington	EN        	EN	NZD
+NI	Nicaragua	NI	Managua	ES        	ES	NIO
+NE	Niger	NE	Niamey	FR        	FR	XOF
+NG	Nigeria	NG	Abuja	EN        	EN	NGN
+NU	Niue	NZ	Alofi	NI        	EN	NZD
+NF	Norfolk Island	AU	Kingston	EN        	EN	AUD
+KP	North Korea	KP	Pyongyang	KO        	EN	KPW
+MP	Northern Mariana Islands	US	Saipan	FI        	EN	USD
+NO	Norway	NO	Oslo	NO        	NO	NOK
+OM	Oman	OM	Muscat	AR        	EN	OMR
+PK	Pakistan	PK	Islamabad	UR        	EN	PKR
+PW	Palau	PW	Melekeok	PW        	EN,PW	USD
+PS	Palestine	PS	East Jerusalem	AR        	EN,AR	ILS
+PA	Panama	PA	Panama City	ES        	ES	PAB
+PG	Papua New Guinea	PG	Port Moresby	EN        	EN	PGK
+PY	Paraguay	PY	Asunción	ES        	ES	PYG
+PE	Peru	PE	Lima	ES        	ES	PEN
+PH	Philippines	PH	Manila	EN        	EN	PHP
+PN	Pitcairn Islands	GB	Adamstown	EN        	EN	NZD
+PL	Poland	PL	Warsaw	PL        	PL	EUR
+PT	Portugal	PT	Lisboa	PT        	PT	EUR
+PR	Puerto Rico	US	San Juan	ES        	ES	USD
+QA	Qatar	QA	Doha	AR        	EN	QAR
+RE	Réunion	FR	Saint-Denis	FR        	FR	EUR
+RO	Romania	RO	Bucharest	RO        	RO	RON
+RU	Russia	RU	Moscow	RU        	EN,RU	RUB
+RW	Rwanda	RW	Kigali	RW        	FR	RWF
+EH	Sahrawi Arab (Western Sahara)	EH	El Aaiún	AR        	EN	MAD
+BL	Saint Barthélemy	FR	Gustavia	FR        	FR	EUR
+SH	Saint Helena, Ascension and Tristan Da Cunha	GB	Jamestown	EN        	EN	SHP
+KN	Saint Kitts and Nevis	KN	Basseterre	EN        	EN	XCD
+LC	Saint Lucia	LC	Castries	EN        	EN	XCD
+MF	Saint Martin	FR	Marigot	FR        	FR	EUR
+PM	Saint Pierre and Miquelon	FR	Saint-Pierre	FR        	FR	EUR
+VC	Saint Vincent and the Grenadines	VC	Kingstown	EN        	EN	XCD
+WS	Samoa	WS	Apia	SM        	SM	WST
+SM	San Marino	SM	Città di San Marino	IT        	IT	EUR
+ST	São Tomé and Príncipe	ST	São Tomé	PT        	PT	STD
+SA	Saudi Arabia	SA	Riyadh	AR        	EN,AR	SAR
+SN	Senegal	SN	Dakar	FR        	FR	XOF
+RS	Serbia	RS	Belgrade	SR        	EN,SR	RSD
+SC	Seychelles	SC	Victoria	EN        	EN	SCR
+SL	Sierra Leone	SL	Freetown	EN        	EN	SLL
+SG	Singapore	SG	Singapore	ZH        	EN	SGD
+SX	Sint Maarten	NL	Marigot	NL        	NL	ANG
+SK	Slovakia	SK	Bratislava	SK        	SK	EUR
+SI	Slovenia	SI	Ljubljana	SL        	SL	EUR
+SB	Solomon Islands	SB	Honiara	EN        	EN	SBD
+SO	Somalia	SO	Mogadishu	SO        	EN	SOS
+ZA	South Africa	ZA	Pretoria	EN        	EN	ZAR
+GS	South Georgia and the South Sandwich Islands	GB	South Georgia and the South Sandwich Islands	EN        	EN	GBP
+KR	South Korea	KR	Seoul	KO        	EN,KO	KRW
+SS	South Sudan	SS	Juba	AR        	EN	SSP
+ES	Spain	ES	Madrid	ES        	ES	EUR
+LK	Sri Lanka	LK	Sri Jayewardenepura Kotte	SI        	EN	LKR
+SD	Sudan	SD	Khartoum	AR        	EN	SDG
+SR	Suriname	SR	Paramaribo	NL        	NL	SRD
+SJ	Svalbard and Jan Mayen	NO	Longyearbyen	NO        	NO	NOK
+SZ	Swaziland	SZ	Mbabane	EN        	EN	SZL
+SE	Sweden	SE	Stockholm	SV        	SV	EUR
+CH	Switzerland	CH	Berne	DE        	DE,FR,IT	CHF
+SY	Syria	SY	Damascus	SY        	EN,AR	SYP
+TW	Taiwan	CN	Dili	CH        	EN,ZH	TWD
+TJ	Tajikistan	TJ	Dushanbe	TG        	EN	TJS
+TZ	Tanzania	TZ	Dodoma	SW        	EN	TZS
+TH	Thailand	TH	Bangkok	TH        	EN,TH	THB
+TG	Togo	TG	Lomé	FR        	FR	XOF
+TK	Tokelau	NZ		TK        	EN	NZD
+TO	Tonga	TO	Nukuʻalofa	TO        	EN	TOP
+TT	Trinidad and Tobago	TT	Port of Spain	EN        	EN	TTD
+TN	Tunisia	TN	Tunis	AR        	FR	TND
+TR	Turkey	TR	Ankara	TR        	TR	TRY
+TM	Turkmenistan	TM	Ashgabat	TK        	EN	TMT
+TC	Turks and Caicos	GB	Cockburn Town	EN        	EN	USD
+TV	Tuvalu	TV	Funafuti	TV        	EN	AUD
+UG	Uganda	UG	Kampala	EN        	EN	UGX
+UA	Ukraine	UA	Kiev	UK        	EN,UK	UAH
+AE	United Arab Emirates	AE	Abu Dhabi	AR        	EN	AED
+GB	United Kingdom	GB	Kinshasa	EN        	EN	GBP
+US	United States	US	Washington, D.C.	EN        	EN	USD
+UM	United States Minor Outlying Islands	US		EN        	EN	USD
+UY	Uruguay	UY	Montevideo	ES        	ES	UYU
+VI	US Virgin Islands	US	Charlotte Amalie	EN        	EN	USD
+UZ	Uzbekistan	UZ	Tashkent	UZ        	EN,RU	UZS
+VU	Vanuatu	VU	Port Vila	BI        	EN	VUV
+VA	Vatican	VA	Città del Vaticano	LA        	LA	EUR
+VE	Venezuela	VE	Caracas	ES        	ES	VEF
+VN	Viet Nam	VN	Hanoi	VI        	VI	VND
+WF	Wallis and Futuna	FR	Mata-Utu	WL        	FR	XPF
+YE	Yemen	YE	Sana'a	AR        	EN,AR	YER
+ZM	Zambia	ZM	Lusaka	EN        	EN	ZMK
+ZW	Zimbabwe	ZW	Harare	EN        	EN	ZWL
