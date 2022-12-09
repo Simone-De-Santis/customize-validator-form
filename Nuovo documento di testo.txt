@@ -1,0 +1,10 @@
+ATBBKMurdQG2xLUxcFChQLEaeaZV7E9CFBBF
+
+dbmasteruser
+xJbmA-8|C2aUTcXx9e^M$*na$`w?C:Sw
+
+sogimadevel
+testsogima
+
+http://18.192.170.221/dbadmin
+http://18.192.170.221/dbadmin/index.php?route=/sql&server=1&db=sendago_es&table=customer&pos=0
