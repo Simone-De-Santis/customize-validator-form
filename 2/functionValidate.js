@@ -4,6 +4,7 @@
  * validate.js is open sourced under the MIT license.
  * Portions of validate.js are inspired by CodeIgniter.
  * http://rickharrison.github.com/validate.js
+ * https://rickharrison.github.io/validate.js/
  */
 
 (function (window, document, undefined) {
