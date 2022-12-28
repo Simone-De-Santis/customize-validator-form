@@ -94,7 +94,7 @@
         for (var i = 0, fieldLength = fields.length; i < fieldLength; i++) {
             var field = fields[i];
 
-            // If passed in incorrectly, we need to skip the field.
+            // Se passato in modo errato, dobbiamo saltare il campo.
             if ((!field.name && !field.names) || !field.rules) {
                 console.warn('validate.js: The following field is being skipped due to a misconfiguration:');
                 console.warn(field);
