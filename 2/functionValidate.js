@@ -8,8 +8,8 @@
 
 (function (window, document, undefined) {
     /*
-     * If you would like an application-wide config, change these defaults.
-     * Otherwise, use the setMessage() function to configure form specific messages.
+     * Se desideri una configurazione a livello di applicazione, modifica queste impostazioni predefinite
+     * Altrimenti, usa la funzione setMessage() per configurare messaggi specifici del modulo.
      */
 
     var defaults = {
@@ -48,7 +48,7 @@
     };
 
     /*
-     * Define the regular expressions that will be used
+     * Definire le espressioni regolari che verranno utilizzate
      */
 
     var ruleRegex = /^(.+?)\[(.+)\]$/,
@@ -68,17 +68,17 @@
         dateRegex = /\d{4}-\d{1,2}-\d{1,2}/;
 
     /*
-     * The exposed public object to validate a form:
+     * L'oggetto pubblico esposto per convalidare un modulo:
      *
-     * @param formNameOrNode - String - The name attribute of the form (i.e. <form name="myForm"></form>) or node of the form element
+     * @param formNameOrNode - String - L'attributo name del modulo (ad es. <form name="myForm"></form>) o il nodo dell'elemento del modulo
      * @param fields - Array - [{
      *     name: The name of the element (i.e. <input name="myField" />)
      *     display: 'Field Name'
      *     rules: required|matches[password_confirm]
      * }]
      * @param callback - Function - The callback after validation has been performed.
-     *     @argument errors - An array of validation errors
-     *     @argument event - The javascript event
+     *     @argument errors - Una matrice di errori di convalida
+     *     @argument event - L'evento javascript
      */
 
     var FormValidator = function (formNameOrNode, fields, callback) {
@@ -102,7 +102,7 @@
             }
 
             /*
-             * Build the master fields array that has all the information needed to validate
+             * Costruisci l'array dei campi master che contiene tutte le informazioni necessarie per la convalida
              */
 
             if (field.names) {
@@ -115,7 +115,7 @@
         }
 
         /*
-         * Attach an event callback for the form submission
+         * Allega una richiamata dell'evento per l'invio del modulo
          */
 
         var _onsubmit = this.form.onsubmit;
@@ -147,7 +147,7 @@
 
     /*
      * @public
-     * Sets a custom message for one of the rules
+     * Imposta un messaggio personalizzato per una delle regole
      */
 
     FormValidator.prototype.setMessage = function (rule, message) {
@@ -159,7 +159,7 @@
 
     /*
      * @public
-     * Registers a callback for a custom rule (i.e. callback_username_check)
+     * Registra una richiamata per una regola personalizzata (ad es. callback_username_check)
      */
 
     FormValidator.prototype.registerCallback = function (name, handler) {
@@ -173,7 +173,7 @@
 
     /*
      * @public
-     * Registers a conditional for a custom 'depends' rule
+     * Registra un condizionale per una regola "dipende" personalizzata
      */
 
     FormValidator.prototype.registerConditional = function (name, conditional) {
@@ -187,7 +187,7 @@
 
     /*
      * @private
-     * Determines if a form dom node was passed in or just a string representing the form name
+     * Determina se è stato passato un nodo form dom o solo una stringa che rappresenta il nome del form
      */
 
     FormValidator.prototype._formByNameOrNode = function (formNameOrNode) {
@@ -196,7 +196,7 @@
 
     /*
      * @private
-     * Adds a file to the master fields array
+     * Aggiunge un file all'array dei campi master
      */
 
     FormValidator.prototype._addField = function (field, nameValue) {
@@ -215,7 +215,7 @@
 
     /*
      * @private
-     * Runs the validation when the form is submitted.
+     * Esegue la convalida quando il modulo viene inviato.
      */
 
     FormValidator.prototype._validateForm = function (evt) {
@@ -234,9 +234,9 @@
                     field.checked = attributeValue(element, 'checked');
 
                     /*
-                     * Run through the rules for each field.
-                     * If the field has a depends conditional, only validate the field
-                     * if it passes the custom function
+                     * Esamina le regole per ogni campo.
+                     * Se il campo ha un condizionale dipendente, convalidare solo il campo
+                     * se supera la funzione personalizzata
                      */
 
                     if (field.depends && typeof field.depends === "function") {
@@ -272,7 +272,7 @@
 
     /*
      * @private
-     * Looks at the fields value and evaluates it against the given rules
+     * Osserva il valore dei campi e lo valuta rispetto alle regole date
      */
 
     FormValidator.prototype._validateField = function (field) {
@@ -282,7 +282,7 @@
             isEmpty = (!field.value || field.value === '' || field.value === undefined);
 
         /*
-         * Run through the rules and execute the validation methods as needed
+         * Esamina le regole ed esegui i metodi di convalida secondo necessità
          */
 
         for (i = 0, ruleLength = rules.length; i < ruleLength; i++) {
@@ -292,8 +292,8 @@
                 parts = ruleRegex.exec(method);
 
             /*
-             * If this field is not required and the value is empty, continue on to the next rule unless it's a callback.
-             * This ensures that a callback will always be called but other rules will be skipped.
+             * Se questo campo non è obbligatorio e il valore è vuoto, passare alla regola successiva a meno che non si tratti di una richiamata.
+             * Ciò garantisce che venga sempre richiamata una richiamata, ma le altre regole verranno ignorate.
              */
 
             if (indexOfRequired === -1 && method.indexOf('!callback_') === -1 && isEmpty) {
@@ -301,7 +301,7 @@
             }
 
             /*
-             * If the rule has a parameter (i.e. matches[param]) split it out
+             * Se la regola ha un parametro (ad es.match[param]) suddividerlo
              */
 
             if (parts) {
@@ -314,7 +314,7 @@
             }
 
             /*
-             * If the hook is defined, run it to find any validation errors
+             * Se l'hook è definito, eseguilo per trovare eventuali errori di convalida
              */
 
             if (typeof this._hooks[method] === 'function') {
@@ -333,7 +333,7 @@
             }
 
             /*
-             * If the hook failed, add a message to the errors array
+             * Se l'hook fallisce, aggiungi un messaggio all'array di errori
              */
 
             if (failed) {
@@ -372,7 +372,7 @@
     };
 
     /**
-     * private function _getValidDate: helper function to convert a string date to a Date object
+     * funzione privata _getValidDate: funzione helper per convertire una data stringa in un oggetto Date
      * @param date (String) must be in format yyyy-mm-dd or use keyword: today
      * @returns {Date} returns false if invalid
      */
@@ -395,7 +395,7 @@
 
     /*
      * @private
-     * Object containing all of the validation hooks
+     * Oggetto contenente tutti gli hook di convalida
      */
 
     FormValidator.prototype._hooks = {
